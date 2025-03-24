@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meteorologist Marcelo Rivera González</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; }
+    header { background-color: #b30000; padding: 2rem 1rem; text-align: center; }
+    nav { background-color: #111; display: flex; justify-content: center; flex-wrap: wrap; }
+    nav a { color: #fff; padding: 1rem; text-decoration: none; font-weight: bold; }
+    nav a:hover { background-color: #b30000; }
+    section { max-width: 900px; margin: 2rem auto; padding: 1rem; }
+    h2 { color: #b30000; border-bottom: 2px solid #b30000; padding-bottom: 0.5rem; }
+    iframe, img { width: 100%; border: none; margin-top: 1rem; }
+    .support-button { display: inline-block; background-color: #b30000; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
+    form { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+    form input, form textarea { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
+    form button { padding: 0.5rem; background-color: #b30000; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .social-icons { text-align: center; margin-top: 1rem; }
+    .social-icons a { margin: 0 1rem; color: #fff; font-size: 1.8rem; }
+    .profile-img { display: block; max-width: 200px; border-radius: 100px; margin: 1rem auto; border: 3px solid #b30000; }
+    .weather-widget { background-color: #1c1c1c; border: 1px solid #b30000; border-radius: 10px; padding: 1rem; margin-bottom: 2rem; text-align: center; }
+    .weather-widget h3 { color: #ff4d4d; margin-bottom: 0.5rem; }
+    .temp { font-size: 2rem; font-weight: bold; }
+    .desc { font-style: italic; }
+    @media (min-width: 768px) {
+      .temps-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 900px;
+        margin: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Meteorologist Marcelo Rivera González</h1>
+</header>
+
+<nav>
+  <a href="#about">About / Sobre Mí</a>
+  <a href="#temps">Current Temperatures</a>
+  <a href="#radar">Radar & Weather Maps</a>
+  <a href="#newsletter">Newsletter</a>
+  <a href="#contact">Contact</a>
+  <a href="#support">Support</a>
+</nav>
+
+<section id="about">
+  <h2>About Me / Sobre Mí</h2>
+  <img src="BA6173E3-9C06-42F6-893D-423C6AA02779.jpeg" alt="Marcelo Rivera González" class="profile-img"/>
+  <p><strong>EN:</strong> After serving for nearly a decade as a University Registrar for Colleges and Universities in Puerto Rico and Texas, I decided to pursue my lifelong dream of becoming a meteorologist. I graduated with a Bachelor's degree in Meteorology from Mississippi State University. My academic background also includes degrees in Business Administration and Labor Relations. These educational and professional chapters shaped my commitment to helping others and sharing knowledge. Today, I communicate science and meteorology on TV and social media.
+  <p><strong>ES:</strong> Después de trabajar por casi una década como Registrador Universitario en instituciones de educación superior en Puerto Rico y Texas, decidí perseguir mi sueño de toda la vida: convertirme en meteorólogo. Me gradué con un bachillerato en Meteorología de la Universidad Estatal de Mississippi. Además, poseo preparación académica en Administración de Empresas y Relaciones Laborales. Estas etapas de mi vida han definido mi compromiso con la educación, el servicio, y la comunicación de la ciencia a través de la televisión y las redes sociales.
+  <blockquote>“Just like dreams, opportunities arrive yes, but we can also go after them.”<br>“Así como los sueños, las oportunidades llegan sí… pero también podemos salir a buscarlas.”</blockquote>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/marcelowxtv/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com/@marcelowx39" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61553970173817" target="_blank"><i class="fab fa-facebook"></i></a>
+  </div>
+</section>
+
+<section id="temps">
+  <h2>🌡️ Current Temperatures / Temperaturas Actuales</h2>
+  <div class="temps-grid">
+    <div class="weather-widget" id="weather-san-juan"><h3>San Juan</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+    <div class="weather-widget" id="weather-san-francisco"><h3>San Francisco</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+    <div class="weather-widget" id="weather-san-jose"><h3>San José</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+    <div class="weather-widget" id="weather-oakland"><h3>Oakland</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+  </div>
+</section>
+
+<section id="radar">
+  <h2>🛰️ Radar & Weather Maps / Mapas y Radares</h2>
+  
+<h3>Windy.com Radar</h3>
+<div style="width: 100%; height: 450px;">
+  <iframe
+    width="100%"
+    height="450"
+    src="https://embed.windy.com/embed2.html?lat=25.3&lon=-75.6&detailLat=25.3&detailLon=-75.6&width=650&height=450&zoom=4&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=true&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
+    frameborder="0"
+  ></iframe>
+</div>
+
+
+  <h3>GOES-16 Satellite View</h3>
+  <img src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/taw/Sandwich/GOES16-TAW-Sandwich-900x540.gif" alt="GOES Satellite Animation"/>
+
+  <h3>National Radar</h3>
+  <img src="https://www.wpc.ncep.noaa.gov/noaa/noaad1.gif?1430959785" alt="National Radar"/>
+
+  <h3>Puerto Rico Radar (TJUA)</h3>
+  <iframe src="https://radar.weather.gov/station/TJUA/standard" width="100%" height="500"></iframe>
+
+  <h3>California Radar (KMUX)</h3>
+  <iframe src="https://radar.weather.gov/station/KMUX/standard" width="100%" height="500"></iframe>
+
+  <h3>Tropical Wind Shear</h3>
+  <img src="https://tropic.ssec.wisc.edu/real-time/atlantic/winds/wg8shr.GIF" alt="Wind Shear Map"/>
+</section>
+
+<section id="newsletter">
+  <h2>📬 Newsletter / Boletín</h2>
+  <p><strong>EN:</strong> Get weekly weather forecasts, articles, and climate insights directly in your inbox.</p>
+  <p><strong>ES:</strong> Recibe pronósticos semanales, artículos y análisis climáticos directamente en tu correo.</p>
+  <form name="newsletter" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="newsletter" />
+    <input type="text" name="name" placeholder="Your Name / Nombre" required />
+    <input type="email" name="email" placeholder="Your Email / Correo electrónico" required />
+    <button type="submit">Subscribe / Suscribirse</button>
+  </form>
+</section>
+
+<section id="contact">
+  <h2>Contact / Newsletter</h2>
+  <form name="contact" method="POST" data-netlify="true">
+    <input type="text" name="name" placeholder="Your Name / Nombre" required />
+    <input type="email" name="email" placeholder="Your Email / Correo electrónico" required />
+    <textarea name="message" placeholder="Your Message / Tu mensaje"></textarea>
+    <button type="submit">Send / Enviar</button>
+  </form>
+</section>
+
+<section id="support">
+  <h2>Support My Work / Apoya Mi Trabajo</h2>
+  <p><strong>EN:</strong> If you'd like to help support future forecasts, research, and community work, you can do so below:</p>
+  <p><strong>ES:</strong> Si deseas apoyar mis pronósticos, investigaciones y trabajo comunitario, puedes hacerlo aquí:</p>
+  <a class="support-button" href="https://www.buymeacoffee.com/" target="_blank">☕ Buy Me a Coffee</a>
+</section>
+
+<script>
+const apiKey = "45827ed8316e4a3d83064743252203";
+function fetchWeather(city, id) {
+  fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`)
+    .then(r => r.json())
+    .then(data => {
+      document.querySelector(`#${id} .temp`).textContent = data.current.temp_f + "°F";
+      document.querySelector(`#${id} .desc`).textContent = data.current.condition.text;
+    });
+}
+fetchWeather("San Juan, PR", "weather-san-juan");
+fetchWeather("San Francisco, CA", "weather-san-francisco");
+fetchWeather("San Jose, CA", "weather-san-jose");
+fetchWeather("Oakland, CA", "weather-oakland");
+</script>
+
+</body>
+</html>
