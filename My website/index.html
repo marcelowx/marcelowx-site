@@ -181,10 +181,92 @@ function fetchWeather(city, id) {
       document.querySelector(`#${id} .desc`).textContent = data.current.condition.text;
     });
 }
-fetchWeather("San Juan, PR", "weather-san-juan");
-fetchWeather("San Francisco, CA", "weather-san-francisco");
-fetchWeather("San Jose, CA", "weather-san-jose");
-fetchWeather("Oakland, CA", "weather-oakland");
+<style>
+  .weather-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    background-color: #000;
+    color: #fff;
+    padding: 2rem;
+  }
+
+  .weather-box {
+    flex: 1 1 calc(33% - 1rem); /* 3 per row, adjust for smaller screens */
+    min-width: 250px;
+    background-color: #111;
+    border: 2px solid #b30000;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .weather-box h3 {
+    color: #b30000;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .weather-box {
+      flex: 1 1 calc(50% - 1rem); /* 2 per row on smaller screens */
+    }
+  }
+
+  @media (max-width: 500px) {
+    .weather-box {
+      flex: 1 1 100%; /* 1 per row on very small screens */
+    }
+  }
+</style>
+
+<section>
+  <h2 style="color: #b30000; text-align: center;">🌡️ Current Temperatures / Temperaturas Actuales</h2>
+  <div class="weather-grid">
+    <div class="weather-box">
+      <h3>San Juan, PR</h3>
+      <div id="weather-san-juan">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>San Francisco, CA</h3>
+      <div id="weather-san-francisco">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>San Jose, CA</h3>
+      <div id="weather-san-jose">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>Oakland, CA</h3>
+      <div id="weather-oakland">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>Dallas, TX</h3>
+      <div id="weather-dallas">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>Houston, TX</h3>
+      <div id="weather-houston">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>Fort Worth, TX</h3>
+      <div id="weather-fort-worth">Loading...</div>
+    </div>
+    <div class="weather-box">
+      <h3>Orlando, FL</h3>
+      <div id="weather-orlando">Loading...</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  fetchWeather("San Juan, PR", "weather-san-juan");
+  fetchWeather("San Francisco, CA", "weather-san-francisco");
+  fetchWeather("San Jose, CA", "weather-san-jose");
+  fetchWeather("Oakland, CA", "weather-oakland");
+  fetchWeather("Dallas, TX", "weather-dallas");
+  fetchWeather("Houston, TX", "weather-houston");
+  fetchWeather("Fort Worth, TX", "weather-fort-worth");
+  fetchWeather("Orlando, FL", "weather-orlando");
 </script>
 
 </body>
