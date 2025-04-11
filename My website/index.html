@@ -84,12 +84,16 @@
 <section id="temps">
   <h2>🌡️ Current Temperatures / Temperaturas Actuales</h2>
   <div class="temps-grid">
-    <div class="weather-widget" id="weather-san-juan"><h3>San Juan</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-san-francisco"><h3>San Francisco</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-san-jose"><h3>San José</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-oakland"><h3>Oakland</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-  </div>
-</section>
+fetchWeather("San Juan, PR", "weather-san-juan");
+fetchWeather("San Francisco, CA", "weather-san-francisco");
+fetchWeather("San Jose, CA", "weather-san-jose");
+fetchWeather("Oakland, CA", "weather-oakland");
+fetchWeather("Dallas, TX", "weather-dallas");
+fetchWeather("Houston, TX", "weather-houston");
+fetchWeather("Fort Worth, TX", "weather-fort-worth");
+fetchWeather("Orlando, FL", "weather-orlando");
+</script>
+
 <section id="forecasts">
   <h2><i class="fas fa-cloud-bolt"></i> Forecasts / Pronósticos</h2>
   <p><strong>EN:</strong> Watch my latest weather forecast videos here.</p>
