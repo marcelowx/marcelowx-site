@@ -123,22 +123,20 @@
   <section id="noaa-tropical-outlook" class="p-4">
   <h2 class="text-xl font-bold mb-2">🌪️ NOAA 7-Day Tropical Outlook</h2>
    
-  <!-- Atlantic -->
-  <div class="mb-6 text-center">
-    <h3 class="text-xl font-semibold text-white mb-2">🌊 Atlantic Basin / Cuenca del Atlántico</h3>
-    <img
-      src="https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png"
-      alt="Atlantic 7-Day Graphical Tropical Weather Outlook"
-      class="w-full max-w-[800px] mx-auto border-4 border-red-600 rounded-xl shadow-md" />
-  </div>
+ <p class="text-center mb-6 text-white text-lg">
+    View current tropical weather outlooks for the Atlantic, Eastern Pacific, and Central Pacific basins. <br>
+    Consulta los pronósticos actuales del Atlántico, Pacífico Oriental y Pacífico Central.
+  </p>
 
-  <!-- Eastern Pacific -->
-  <div class="text-center">
-    <h3 class="text-xl font-semibold text-white mb-2">🌊 Eastern Pacific / Pacífico Oriental</h3>
-    <img
-      src="https://www.nhc.noaa.gov/xgtwo/two_epac_7d0.png"
-      alt="Eastern Pacific 7-Day Graphical Tropical Weather Outlook"
-      class="w-full max-w-[800px] mx-auto border-4 border-red-600 rounded-xl shadow-md" />
+  <div class="w-full max-w-[1200px] mx-auto border-4 border-red-600 rounded-2xl overflow-hidden shadow-xl">
+    <iframe
+      src="https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7"
+      title="National Hurricane Center - 7 Day Outlook"
+      width="100%"
+      height="1500"
+      style="border: none;"
+      loading="lazy">
+    </iframe>
   </div>
 </section>
 
