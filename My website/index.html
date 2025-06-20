@@ -123,18 +123,30 @@
   <section id="noaa-tropical-outlook" class="p-4">
   <h2 class="text-xl font-bold mb-2">🌪️ NOAA 7-Day Tropical Outlook</h2>
    
- <p class="text-center mb-6 text-white text-lg">
-    Click the tabs to switch between Atlantic, Eastern Pacific, and Central Pacific. <br>
-    Haz clic en las pestañas para cambiar entre cuencas tropicales.
+ <p class="text-center mb-6">
+    Switch between basins anytime — Atlantic, Eastern Pacific, Central Pacific. <br>
+    Cambia entre cuencas: Atlántico, Pacífico Oriental, Pacífico Central.
   </p>
 
-  <div style="max-width: 1200px; margin: 0 auto; border: 4px solid #dc2626; border-radius: 1rem; overflow: hidden; box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);">
+  <div style="
+    position:relative; 
+    width:100%; 
+    max-width:1200px; 
+    margin:0 auto; 
+    border:4px solid #dc2626; 
+    border-radius:1rem; 
+    overflow:hidden; 
+    box-shadow:0 0 20px rgba(255,0,0,0.3);
+  ">
     <iframe
       src="https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7"
-      width="100%"
-      height="1000%"
-      style="border: none; display: block;"
-      title="NOAA Tropical Weather Outlook"
+      title="NOAA Tropical Outlook"
+      style="
+        width:100%;
+        height:1700px;
+        border:none;
+        display:block;
+      "
       loading="lazy"
       scrolling="no">
     </iframe>
