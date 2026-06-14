@@ -1,315 +1,646 @@
-
-</p>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO meta tags -->
-  <title>Bilingual Weather Forecasts | Meteorologist Marcelo Rivera</title>
-  <meta name="description" content="Accurate and bilingual weather forecasts, tropical storm updates, and climate news by meteorologist Marcelo Rivera. Covering Puerto Rico, California, and more.">
-  <meta name="keywords" content="bilingual weather forecast, Puerto Rico weather, California weather, noticias del tiempo, meteorólogo, clima tropical, Marcelo Rivera">
-  <meta name="author" content="Marcelo Rivera">
-  <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>MarceloWXTV | Bilingual Weather, Climate & Geospatial Science</title>
+  <meta name="description" content="Bilingual weather updates, tropical meteorology, climate storytelling, and geospatial science from meteorologist Marcelo Rivera González. Serving the Rio Grande Valley, South Texas, Puerto Rico, and tropical weather audiences." />
+  <meta name="keywords" content="MarceloWXTV, Marcelo Rivera, bilingual meteorologist, Rio Grande Valley weather, South Texas weather, Puerto Rico weather, tropical meteorology, hurricane science, climate change, geospatial science, ArcGIS portfolio" />
+  <meta name="author" content="Marcelo Rivera González" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
-    body { background: #000; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; }
-    header { background-color: #b30000; padding: 2rem 1rem; text-align: center; }
-    nav { background-color: #111; display: flex; justify-content: center; flex-wrap: wrap; }
-    nav a { color: #fff; padding: 1rem; text-decoration: none; font-weight: bold; }
-    nav a:hover { background-color: #b30000; }
-    section { max-width: 900px; margin: 2rem auto; padding: 1rem; }
-    h2 { color: #b30000; border-bottom: 2px solid #b30000; padding-bottom: 0.5rem; }
-    iframe, img { width: 100%; border: none; margin-top: 1rem; }
-    .support-button { display: inline-block; background-color: #b30000; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; }
-    form { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
-    form input, form textarea { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; }
-    form button { padding: 0.5rem; background-color: #b30000; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    .social-icons { text-align: center; margin-top: 1rem; }
-    .social-icons a { margin: 0 1rem; color: #fff; font-size: 1.8rem; }
-    .profile-img { display: block; max-width: 200px; border-radius: 100px; margin: 1rem auto; border: 3px solid #b30000; }
-    .weather-widget { background-color: #1c1c1c; border: 1px solid #b30000; border-radius: 10px; padding: 1rem; margin-bottom: 2rem; text-align: center; }
-    .weather-widget h3 { color: #ff4d4d; margin-bottom: 0.5rem; }
-    .temp { font-size: 2rem; font-weight: bold; }
-    .desc { font-style: italic; }
-    .temps-grid {
+    :root {
+      --bg: #050505;
+      --panel: #111;
+      --panel-soft: #181818;
+      --red: #b30000;
+      --red-bright: #ff3333;
+      --text: #ffffff;
+      --muted: #cccccc;
+      --line: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--red-bright);
+    }
+
+    header {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7)),
+        radial-gradient(circle at top left, #cc0000 0, #300 35%, #000 75%);
+      padding: 4rem 1.2rem 3rem;
+      text-align: center;
+      border-bottom: 3px solid var(--red);
+    }
+
+    header h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      margin: 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: 1rem auto 0;
+      color: #f1f1f1;
+      font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      background: #e60000;
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid var(--red-bright);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(17, 17, 17, 0.97);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      padding: 0.9rem 1rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      background: var(--red);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.2rem;
+    }
+
+    h2 {
+      color: var(--red-bright);
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 0.6rem;
+      margin-top: 0;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    h3 {
+      color: #ff6666;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    .profile-img {
+      display: block;
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 1.2rem;
+      border: 4px solid var(--red);
+      box-shadow: 0 0 30px rgba(179, 0, 0, 0.55);
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      max-width: 1000px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--red);
+      border-radius: 14px;
+      padding: 1.2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .card p:last-child,
+    .card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout {
+      background: linear-gradient(135deg, rgba(179,0,0,0.35), rgba(17,17,17,0.95));
+      border: 1px solid var(--red);
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin-top: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 1.2rem;
+    }
+
+    .social-icons a {
+      margin: 0 0.6rem;
+      color: #fff;
+      font-size: 1.9rem;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: var(--red-bright);
+    }
+
+    .weather-widget {
+      background: var(--panel-soft);
+      border: 1px solid var(--red);
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .weather-widget h3 {
+      margin-top: 0;
+      color: #ff6666;
+    }
+
+    .temp {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    iframe,
+    img {
+      width: 100%;
+      border: none;
+      margin-top: 1rem;
+      border-radius: 12px;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+      align-items: start;
+    }
+
+    .map-card {
+      overflow: hidden;
+    }
+
+    .map-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #555;
+      border-radius: 8px;
+      background: #0b0b0b;
+      color: #fff;
+      font: inherit;
+    }
+
+    form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    form button {
+      padding: 0.9rem 1rem;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    form button:hover {
+      background: #e60000;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 2rem 1rem;
+      background: #070707;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 3rem 1rem 2.5rem;
+      }
+
+      nav {
+        position: static;
+      }
+
+      nav a {
+        width: 50%;
+        text-align: center;
+        padding: 0.75rem 0.4rem;
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 2.2rem 1rem;
+      }
+
+      .map-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Meteorologist Marcelo Rivera González</h1>
-</header>
-
-<nav>
-  <a href="#about">About / Sobre Mí</a>
-  <a href="#temps">Current Temperatures / Temperaturas Actuales</a>
-  <a href="#weather-news">Weather News / Noticias del Tiempo</a>
-  <a href="#radar">Radar & Weather Maps / Mapas y Radares</a>
-  <a href="#tropical">Tropical Meteorology / Meteorología Tropical</a>
-  <a href="#noaa-radio">NOAA Weather Radio / Radio NOAA</a>
-  <a href="#newsletter">Newsletter / Boletín</a>
-  <a href="#contact">Contact / Contacto</a>
-  <a href="#support">Support / Apoya</a>
-</nav> 
-  
-<section id="about">
-  <h2>About Me / Sobre Mí</h2>
-  <img src="BA6173E3-9C06-42F6-893D-423C6AA02779.jpeg" alt="Marcelo Rivera González" class="profile-img"/>
-  <p><strong>EN:</strong> After serving for nearly a decade as a University Registrar for Colleges and Universities in Puerto Rico and Texas, I decided to pursue my lifelong dream of becoming a meteorologist. I graduated with a Bachelor's degree in Meteorology from Mississippi State University. My academic background also includes a bachelor's degree in Business Administration and a master's degree Labor Relations. These educational and professional chapters shaped my commitment to helping others and sharing knowledge. Today, I communicate science and meteorology on TV and social media.
-  <p><strong>ES:</strong> Después de trabajar por casi una década como Registrador Universitario en instituciones de educación superior en Puerto Rico y Texas, decidí perseguir mi sueño de toda la vida: convertirme en meteorólogo. Me gradué con un bachillerato en Meteorología de la Universidad Estatal de Mississippi. Además, poseo un bachillerato en Administración de Empresas y una maestría en Relaciones Laborales. Estas etapas de mi vida han definido mi compromiso con la educación, el servicio, y la comunicación de la ciencia a través de la televisión y las redes sociales.
-  <blockquote>“Just like dreams, opportunities arrive yes, but we can also go after them.”<br>“Así como los sueños, las oportunidades llegan sí… pero también podemos salir a buscarlas.”</blockquote>
-  <div class="social-icons">
-    <a href="https://www.instagram.com/marcelowxtv/" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.youtube.com/@marcelowxtv" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61553970173817" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.tiktok.com/@marcelowxtv?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
-</div>
-</section>
-
-<section id="temps">
-  <h2>🌡️ Current Temperatures / Temperaturas Actuales</h2>
-  <div class="temps-grid">
-    <div class="weather-widget" id="weather-san-juan"><h3>San Juan</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-san-francisco"><h3>San Francisco</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-san-jose"><h3>San José</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-oakland"><h3>Oakland</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-dallas"><h3>Dallas</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-houston"><h3>Houston</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-fort-worth"><h3>Fort Worth</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-    <div class="weather-widget" id="weather-orlando"><h3>Orlando</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-  </div>
-</section>
-
-<!-- Your radar, newsletter, contact and support sections continue unchanged -->
-
-<section id="radar">
- <section id="radar">
-  <h2>🛰️ Radar & Weather Maps / Mapas y Radares</h2>
-
-  <div class="maps-grid">
-
-    <div>
-      <h3>Windy.com Radar</h3>
-      <iframe
-        width="70%" height="500"
-        src="https://embed.windy.com/embed2.html?lat=25.3&lon=-75.6&detailLat=25.3&detailLon=-75.6&width=650&height=450&zoom=4&level=surface&overlay=rain&menu=&message=true&marker=&calendar=&pressure=true&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1"
-        frameborder="0">
-      </iframe>
+  <header>
+    <h1>MarceloWXTV</h1>
+    <p>Bilingual weather, tropical meteorology, climate storytelling, and geospatial science for the Rio Grande Valley, South Texas, Puerto Rico, and beyond.</p>
+    <div class="hero-buttons">
+      <a class="button" href="#current-weather">Check Current Weather</a>
+      <a class="button secondary" href="#portfolio">View Portfolio</a>
+      <a class="button secondary" href="#contact">Contact Marcelo</a>
     </div>
+  </header>
 
-    <div>
-      <h3>GOES-19 Satellite View</h3> (Atlantic)
-      <img src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/taw/Sandwich/GOES16-TAW-Sandwich-900x540.gif" alt="GOES Satellite Animation"/>
-    </div>
-    <div>
-      <h3>National Forecast/Pronóstico Nacional</h3>
-      <img src="https://www.wpc.ncep.noaa.gov/noaa/noaad1.gif?1430959785" alt="National Radar"/>
-    </div>
+  <nav aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#rgv-weather">RGV Weather</a>
+    <a href="#current-weather">Temperatures</a>
+    <a href="#radar">Radar & Maps</a>
+    <a href="#tropical">Tropical</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#videos">Videos</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <div>
-      <h3>Puerto Rico Radar (TJUA)</h3>
-      <iframe src="https://radar.weather.gov/station/TJUA/standard" width="70%" height="500"></iframe>
-    </div>
+  <main>
+    <section id="about">
+      <h2>About Me / Sobre Mí</h2>
+      <img src="BA6173E3-9C06-42F6-893D-423C6AA02779.jpeg" alt="Meteorologist Marcelo Rivera González" class="profile-img" />
 
-    <div>
-      <h3>California Radar (KMUX)</h3>
-      <iframe src="https://radar.weather.gov/station/KMUX/standard" width="70%" height="500"></iframe>
-    </div>
+      <div class="grid">
+        <div class="card">
+          <h3>English</h3>
+          <p>I am Marcelo Rivera González, a bilingual meteorologist and science communicator. My work focuses on clear, useful, and responsible weather information for communities across the Rio Grande Valley, South Texas, Puerto Rico, and tropical weather audiences.</p>
+          <p>Before becoming a meteorologist, I served for nearly a decade in higher education administration. That background shaped how I communicate today: with service, clarity, education, and community impact at the center.</p>
+        </div>
 
-    <div>
+        <div class="card">
+          <h3>Español</h3>
+          <p>Soy Marcelo Rivera González, meteorólogo bilingüe y comunicador científico. Mi trabajo se enfoca en información del tiempo clara, útil y responsable para comunidades del Valle del Río Grande, el sur de Texas, Puerto Rico y audiencias interesadas en meteorología tropical.</p>
+          <p>Antes de convertirme en meteorólogo, trabajé por casi una década en la administración universitaria. Esa experiencia fortalece mi compromiso con la educación, el servicio y la comunicación accesible de la ciencia.</p>
+        </div>
+      </div>
 
-<section style="background-color: #000; color: #fff; padding: 2rem;">
-  <h2 style="color: #b30000;">📡 NOAA Tools & Maps / Herramientas y Mapas NOAA</h2>
-  <section id="noaa-tropical-outlook" class="p-4">
-  <h3 style="color: red; font-family: Arial, sans-serif; text-align: center; margin: 40px 0 10px;">
-  <h3 style="color: red; font-family: Arial, sans-serif; text-align: center; margin: 40px 0 10px;">
-  <h3 style="color: red; font-family: Arial, sans-serif; text-align: center; margin: 40px 0 10px;">
-<h3 style="color: red; font-family: Arial, sans-serif; text-align: center; margin: 40px 0 10px;">
-  🌬️ GOES-16 SAL/Polvo del Sahara
-</h3>
-<iframe 
-  src="https://tropic.ssec.wisc.edu/real-time/sal/g16split/movies/goes16split.html" 
-  width="1500%" 
-  height="900" 
-  style="border: none; display: block; max-width: 1200px; margin: 0 auto; overflow: hidden;" 
-  scrolling="no">
-</iframe>
-<p style="color: red; font-family: Arial, sans-serif; text-align: center; margin-top: 10px; font-size: 16px;">
-  Satellite imagery showing the Saharan Air Layer over the Atlantic using GOES-16 split window data.<br>
-  Imagen satelital que muestra la Capa de Aire del Sahara sobre el Atlántico usando datos de ventana dividida del GOES-16.
+      <div class="callout">
+        “Just like dreams, opportunities arrive, yes — but we can also go after them.”<br />
+        “Así como los sueños, las oportunidades llegan, sí — pero también podemos salir a buscarlas.”
+      </div>
 
-    <!-- NOAA Interactive Radar -->
- <!-- 🔥 NO MORE BORDERS! Final version for NOAA Radar -->
-<h3 style="color: red; font-family: Arial, sans-serif; text-align: center; margin: 40px 0 10px;">
-  🌧️ Live National NOAA Radar / Radar Nacional en Vivo de NOAA
-</h3>
-<iframe 
-  src="https://radar.weather.gov" 
-  width="100%" 
-  height="600" 
-  style="border: none; display: block; max-width: 1200px; margin: 0 auto;">
-</iframe>
+      <div class="social-icons" aria-label="Social media links">
+        <a href="https://www.instagram.com/marcelowxtv/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@marcelowxtv" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61553970173817" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@marcelowxtv" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </section>
 
-  <section id="tropical">
-  <h2 style="color: #b30000; text-align: center;">🌀 Tropical Meteorology / Meteorología Tropical</h2>
-  <p style="text-align: center;">
-  <p style="text-align: center;">
-  
-  <strong>EN:</strong> Colorado State University’s 2025 forecast anticipates an above-average Atlantic hurricane season.<br>
-  <strong>ES:</strong> La Universidad Estatal de Colorado anticipa una temporada de huracanes por encima del promedio para 2025.
+    <section id="rgv-weather">
+      <h2>RGV Weather Focus / Enfoque del Tiempo en el Valle</h2>
+      <p class="section-intro">Weather in the Rio Grande Valley can change fast, from extreme heat and humidity to sea breeze storms, tropical moisture, coastal flooding, and hurricane season impacts. This section highlights the local weather themes I track closely.</p>
 
-    </div>
-</section>
+      <div class="grid">
+        <div class="card">
+          <h3>🌡️ Heat & Humidity</h3>
+          <p>Updates focused on heat index, hydration, outdoor safety, and the local impacts of humidity across McAllen, Harlingen, Brownsville, Weslaco, Starr County, and the coast.</p>
+        </div>
+        <div class="card">
+          <h3>⛈️ Storms & Flooding</h3>
+          <p>Clear explanations of thunderstorms, heavy rain, isolated flooding, severe weather threats, and why not every storm affects every city the same way.</p>
+        </div>
+        <div class="card">
+          <h3>🌊 Coastal Weather</h3>
+          <p>Forecast context for South Padre Island, coastal winds, rip currents, beach plans, sea breeze showers, and tropical moisture moving into deep South Texas.</p>
+        </div>
+        <div class="card">
+          <h3>🌀 Tropical Awareness</h3>
+          <p>Hurricane science, tropical outlooks, preparedness messaging, and practical explanations without hype or panic.</p>
+        </div>
+      </div>
+    </section>
 
-<div style="text-align: center; margin-top: 1.5rem;">
+    <section id="current-weather">
+      <h2>🌡️ Current Temperatures / Temperaturas Actuales</h2>
+      <p class="section-intro">Live temperature snapshots for the Rio Grande Valley, South Texas coast, and Puerto Rico.</p>
 
-<div style="text-align: center; margin-top: 1.5rem;">
-  <img src="csu-hurricane-forecast.png" alt="CSU Forecast 2025" style="max-width: 70%; border: 2px solid #b30000; border-radius: 10px;" />
-   <p class="mb-1">
- <p class="mb-1">
+      <div class="grid">
+        <div class="weather-widget" id="weather-mcallen"><h3>McAllen</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-harlingen"><h3>Harlingen</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-brownsville"><h3>Brownsville</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-weslaco"><h3>Weslaco</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-rio-grande-city"><h3>Rio Grande City</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-south-padre"><h3>South Padre Island</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-san-juan"><h3>San Juan, PR</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-corpus"><h3>Corpus Christi</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+      </div>
+    </section>
 
-    📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico
-  </h2>
-  <p style="color:#cc0000; font-weight: bold; margin-bottom: 2em;">
-    Monthly average number of named storms in the Atlantic basin / 
-    Promedio mensual de tormentas con nombre en la cuenca del Atlántico:
-  </p>
+    <section id="radar">
+      <h2>🛰️ Radar & Weather Maps / Mapas y Radares</h2>
+      <p class="section-intro">Clean map previews without internal scroll bars. Each image fits the page, and users can open the official interactive map in a new tab when they want more detail.</p>
 
-  <div class="climo-images" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <div class="map-grid">
+        <div class="card map-card">
+          <h3>📡 Brownsville / RGV Radar Loop</h3>
+          <img class="map-image" src="https://radar.weather.gov/ridge/standard/KBRO_loop.gif" alt="Brownsville and Rio Grande Valley radar loop" />
+          <p>Best quick radar view for the Rio Grande Valley and Deep South Texas.</p>
+          <div class="map-actions">
+            <a class="button" href="https://radar.weather.gov/station/KBRO/standard" target="_blank" rel="noopener">Open Interactive KBRO Radar</a>
+          </div>
+        </div>
 
-    <div>
-      <h3 style="color:#cc0000;">June / Junio</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Storm Climatology" style="width:100%; border-radius: 10px;">
-    </div>
+        <div class="card map-card">
+          <h3>🇵🇷 Puerto Rico Radar Loop</h3>
+          <img class="map-image" src="https://radar.weather.gov/ridge/standard/TJUA_loop.gif" alt="Puerto Rico radar loop" />
+          <p>Radar loop for Puerto Rico and nearby Caribbean waters.</p>
+          <div class="map-actions">
+            <a class="button" href="https://radar.weather.gov/station/TJUA/standard" target="_blank" rel="noopener">Open Interactive TJUA Radar</a>
+          </div>
+        </div>
 
-    <div>
-      <h3 style="color:#cc0000;">July / Julio</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Storm Climatology" style="width:100%; border-radius: 10px;">
-    </div>
+        <div class="card map-card">
+          <h3>🌎 National Forecast Map</h3>
+          <img class="map-image" src="https://www.wpc.ncep.noaa.gov/noaa/noaad1.gif" alt="NOAA national forecast map" />
+          <p>Official national forecast map from NOAA's Weather Prediction Center.</p>
+          <div class="map-actions">
+            <a class="button" href="https://www.wpc.ncep.noaa.gov/" target="_blank" rel="noopener">Open WPC Forecasts</a>
+          </div>
+        </div>
 
-    <div>
-      <h3 style="color:#cc0000;">August / Agosto</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Storm Climatology" style="width:100%; border-radius: 10px;">
-    </div>
+        <div class="card map-card">
+          <h3>🛰️ Atlantic Satellite View</h3>
+          <img class="map-image" src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/taw/Sandwich/GOES16-TAW-Sandwich-900x540.gif" alt="GOES Atlantic satellite loop" />
+          <p>Satellite view for monitoring tropical waves, moisture, and systems across the tropical Atlantic.</p>
+          <div class="map-actions">
+            <a class="button" href="https://www.star.nesdis.noaa.gov/GOES/sector.php?sat=G16&sector=taw" target="_blank" rel="noopener">Open NOAA Satellite</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div>
-      <h3 style="color:#cc0000;">September / Septiembre</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Storm Climatology" style="width:100%; border-radius: 10px;">
-    </div>
+    <section id="tropical">
+      <h2>🌀 Tropical Weather Center / Centro de Meteorología Tropical</h2>
+      <p class="section-intro">A bilingual hub for hurricane science, tropical outlooks, and preparedness education. The goal is simple: useful tropical information without fear-based hype.</p>
 
-    <div>
-      <h3 style="color:#cc0000;">October / Octubre</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Storm Climatology" style="width:100%; border-radius: 10px;">
-    </div>
+      <div class="grid">
+        <div class="card">
+          <h3>🗺️ Atlantic Tropical Weather Outlook</h3>
+          <img src="https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png" alt="National Hurricane Center Atlantic Tropical Weather Outlook" />
+          <p><a href="https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7" target="_blank" rel="noopener">Open the latest NHC Atlantic outlook</a></p>
+        </div>
 
-    <div>
-      <h3 style="color:#cc0000;">November / Noviembre</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Storm Climatology" style="width:100%; border-radius: 10px;">
-    </div>
+        <div class="card">
+          <h3>💨 Tropical Wind Shear</h3>
+          <img src="https://tropic.ssec.wisc.edu/real-time/atlantic/winds/wg8shr.GIF" alt="Tropical Atlantic wind shear map" />
+          <p>Wind shear is one of the key atmospheric factors that can limit or support tropical development.</p>
+        </div>
+      </div>
 
-    <div style="grid-column: 1 / -1;">
-      <h3 style="color:#cc0000;">Peak of Hurricane Season – "Campfire" Graphic / Punto Máximo de la Temporada – Gráfico de "Fogata"</h3>
-      <img src="https://www.nhc.noaa.gov/climo/images/2021climo/AtlanticCampfire_sm.png" alt="Hurricane Season Campfire" style="width:50%; border-radius: 10px;">
-    </div>
-   
-  </div>
+      <div class="card" style="margin-top: 1.2rem;">
+        <h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
+        <p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
 
-  <p class="text-center text-white">
-    ❤️ Like, comment, and subscribe for more tropical weather updates! <br>
-    ❤️ ¡Dale like, comenta y suscríbete para más actualizaciones del clima tropical!
-  </p>
-</section>
+        <div class="grid">
+          <div><h3>June / Junio</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Atlantic named storm climatology" /></div>
+          <div><h3>July / Julio</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Atlantic named storm climatology" /></div>
+          <div><h3>August / Agosto</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Atlantic named storm climatology" /></div>
+          <div><h3>September / Septiembre</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Atlantic named storm climatology" /></div>
+          <div><h3>October / Octubre</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Atlantic named storm climatology" /></div>
+          <div><h3>November / Noviembre</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Atlantic named storm climatology" /></div>
+        </div>
+      </div>
+    </section>
 
+    <section id="portfolio">
+      <h2>🗺️ ArcGIS & Geospatial Portfolio</h2>
+      <p class="section-intro">My geospatial work connects weather, climate risk, flooding, water resources, and community vulnerability through maps, analysis, and visual storytelling.</p>
 
-<div style="text-align: center;">
-  <h3>Tropical Wind Shear Map</h3>
-  <img 
-    src="https://tropic.ssec.wisc.edu/real-time/atlantic/winds/wg8shr.GIF" 
-    alt="Tropical Wind Shear Map"
-    style="max-width: 70%; height: auto; border: 4px solid red; border-radius: 12px;" />
-</div>
+      <div class="grid">
+        <div class="card">
+          <h3>Hurricane Flood Risk Mapping</h3>
+          <p>Geospatial analysis focused on hurricane flood risk in the Rio Grande Valley, including Cameron, Hidalgo, Willacy, and Starr counties.</p>
+        </div>
+        <div class="card">
+          <h3>Climate & Community Risk</h3>
+          <p>Mapping projects that explore climate change, extreme rainfall, heat, coastal hazards, water access, and the communities most affected.</p>
+        </div>
+        <div class="card">
+          <h3>ArcGIS Storytelling</h3>
+          <p>Maps and web-based projects designed to make complex weather and climate topics easier to understand for the public.</p>
+        </div>
+      </div>
 
-</section>
-<section id="weather-news">
-  <h2 style="color: #b30000; text-align: center; margin-top: 3rem;">
-    📰 Weather News / Noticias del Tiempo
-  <!-- Noticia en inglés -->
-  <article style="background-color: #111; color: white; padding: 2rem; margin: 2rem auto; max-width: 900px; border-radius: 6px;">
-    <h3 style="color: #ff4d4d; text-align: center;">💔 Deadly Flooding Strikes Texas Hill Country</h3>
-    <p style="text-align: center; color: #ccc;"><em>Published: July 5, 2025</em></p>
-    
-    <div style="text-align: left; margin-top: 1rem;">
-      <p><strong>EN:</strong> A powerful storm system unleashed torrential rainfall across parts of the Hill Country in Texas, causing catastrophic flooding and leaving a trail of devastation along the Guadalupe River. More than 25 people have been confirmed dead. As of Saturday morning (CT), authorities and local officials continue search and rescue operations for those still missing.</p>
-    </div>
-  </article>
+      <div class="callout">
+        Portfolio links and résumé documents can be added here once they are uploaded to ArcGIS Online, GitHub, or another public link.
+      </div>
+    </section>
 
-  <!-- Noticia en español -->
-  <article style="background-color: #111; color: white; padding: 2rem; margin: 2rem auto; max-width: 900px; border-radius: 6px;">
-    <h3 style="color: #ff4d4d; text-align: center;">💔 Inundaciones Mortales Afectan el Hill Country de Texas</h3>
-    <p style="text-align: center; color: #ccc;"><em>Publicado: 5 de julio de 2025</em></p>
-    
-    <div style="text-align: left; margin-top: 1rem;">
-      <p><strong>ES:</strong> Un potente sistema de tormentas desató lluvias torrenciales sobre partes del Hill Country en Texas, provocando inundaciones catastróficas y dejando un rastro de destrucción a lo largo del río Guadalupe. Se ha confirmado la muerte de más de 25 personas. Hasta la mañana del sábado (hora central), las autoridades y funcionarios locales continúan las labores de búsqueda y rescate para localizar a los desaparecidos.</p>
-    </div>
-  </article>
-</section>
-  
-<section id="newsletter">
-  <h2>📬 Newsletter / Boletín</h2>
+    <section id="videos">
+      <h2>🎥 Weather Videos & Social Media</h2>
+      <p class="section-intro">Follow MarceloWXTV for bilingual, simple, and practical weather explainers, tropical updates, hurricane science, and local RGV forecasts.</p>
 
-  <form name="newsletter" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="newsletter" />
-    <input type="text" name="name" placeholder="Your Name / Nombre" required />
-    <input type="email" name="email" placeholder="Your Email / Correo electrónico" required />
-    <button type="submit">Subscribe / Suscribirse</button>
-  </form>
-</section>
+      <div class="grid">
+        <div class="card">
+          <h3>TikTok</h3>
+          <p>Short weather explainers, tropical updates, and RGV-focused weather content.</p>
+          <a class="button" href="https://www.tiktok.com/@marcelowxtv" target="_blank" rel="noopener">Visit TikTok</a>
+        </div>
+        <div class="card">
+          <h3>Instagram</h3>
+          <p>Weather graphics, video updates, and behind-the-scenes science communication.</p>
+          <a class="button" href="https://www.instagram.com/marcelowxtv/" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+        <div class="card">
+          <h3>YouTube</h3>
+          <p>Longer weather explainers, tropical education, and bilingual science content.</p>
+          <a class="button" href="https://www.youtube.com/@marcelowxtv" target="_blank" rel="noopener">Visit YouTube</a>
+        </div>
+        <div class="card">
+          <h3>Facebook</h3>
+          <p>Community updates, weather posts, and local forecast information.</p>
+          <a class="button" href="https://www.facebook.com/profile.php?id=61553970173817" target="_blank" rel="noopener">Visit Facebook</a>
+        </div>
+      </div>
+    </section>
 
-<section id="contact">
-  <h2>Contact / Newsletter</h2>
-  <form name="contact" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="contact" />
-    <input type="text" name="name" placeholder="Your Name / Nombre" required />
-    <input type="email" name="email" placeholder="Your Email / Correo electrónico" required />
-    <textarea name="message" placeholder="Your Message / Tu mensaje"></textarea>
-    <button type="submit">Send / Enviar</button>
-  </form>
-</section>
+    <section id="services">
+      <h2>🤝 Services & Collaborations / Servicios y Colaboraciones</h2>
+      <p class="section-intro">Available for bilingual weather communication, educational presentations, community events, climate storytelling, and geospatial science projects.</p>
 
-<section id="support">
-  <h2>Support My Work / Apoya Mi Trabajo</h2>
-  <p><strong>EN:</strong> If you'd like to help support future forecasts, research, and community work, you can do so below:</p>
-  <p><strong>ES:</strong> Si deseas apoyar mis pronósticos, investigaciones y trabajo comunitario, puedes hacerlo aquí:</p>
-  <a class="support-button" href="https://www.buymeacoffee.com/" target="_blank">☕ Buy Me a Coffee</a>
-</section>
+      <div class="grid">
+        <div class="card">
+          <h3>School & Community Visits</h3>
+          <p>Weather, hurricanes, climate, and STEM presentations for schools, community groups, and public events.</p>
+        </div>
+        <div class="card">
+          <h3>Bilingual Weather Content</h3>
+          <p>English and Spanish scripts, videos, explainers, and weather safety messaging for digital platforms.</p>
+        </div>
+        <div class="card">
+          <h3>Weather-Aware Business Support</h3>
+          <p>Custom weather communication support for local organizations, events, construction, real estate, outdoor planning, and community outreach.</p>
+        </div>
+        <div class="card">
+          <h3>GIS & Climate Storytelling</h3>
+          <p>Maps, story maps, and geospatial analysis focused on climate risk, flooding, hurricanes, heat, and water resources.</p>
+        </div>
+      </div>
+    </section>
 
-<script>
-const apiKey = "45827ed8316e4a3d83064743252203";
-function fetchWeather(city, id) {
-  fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`)
-    .then(r => r.json())
-    .then(data => {
-      document.querySelector(`#${id} .temp`).textContent = data.current.temp_f + "°F";
-      document.querySelector(`#${id} .desc`).textContent = data.current.condition.text;
-    });
-}
-fetchWeather("San Juan, PR", "weather-san-juan");
-fetchWeather("San Francisco, CA", "weather-san-francisco");
-fetchWeather("San Jose, CA", "weather-san-jose");
-fetchWeather("Oakland, CA", "weather-oakland");
-fetchWeather("Dallas, TX", "weather-dallas");
-fetchWeather("Houston, TX", "weather-houston");
-fetchWeather("Fort Worth, TX", "weather-fort-worth");
-fetchWeather("Orlando, FL", "weather-orlando");
-</script>
+    <section id="contact">
+      <h2>Contact / Contacto</h2>
+      <p class="section-intro">For collaborations, school visits, weather services, media projects, GIS work, or general messages, use the form below.</p>
 
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="text" name="name" placeholder="Your Name / Nombre" required />
+        <input type="email" name="email" placeholder="Your Email / Correo electrónico" required />
+        <select name="topic" aria-label="Message topic">
+          <option value="General message">General message / Mensaje general</option>
+          <option value="School or community visit">School or community visit / Visita escolar o comunitaria</option>
+          <option value="Weather services">Weather services / Servicios del tiempo</option>
+          <option value="GIS or climate project">GIS or climate project / Proyecto GIS o climático</option>
+          <option value="Media collaboration">Media collaboration / Colaboración de medios</option>
+        </select>
+        <textarea name="message" placeholder="Your Message / Tu mensaje" required></textarea>
+        <button type="submit">Send Message / Enviar Mensaje</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> MarceloWXTV · Weather, climate, and geospatial science communication.</p>
+    <p>For life-threatening weather, always follow official warnings from the National Weather Service, National Hurricane Center, and local emergency management.</p>
+  </footer>
+
+  <script>
+    const apiKey = "45827ed8316e4a3d83064743252203";
+
+    const weatherLocations = [
+      { city: "McAllen, TX", id: "weather-mcallen" },
+      { city: "Harlingen, TX", id: "weather-harlingen" },
+      { city: "Brownsville, TX", id: "weather-brownsville" },
+      { city: "Weslaco, TX", id: "weather-weslaco" },
+      { city: "Rio Grande City, TX", id: "weather-rio-grande-city" },
+      { city: "South Padre Island, TX", id: "weather-south-padre" },
+      { city: "San Juan, Puerto Rico", id: "weather-san-juan" },
+      { city: "Corpus Christi, TX", id: "weather-corpus" }
+    ];
+
+    function fetchWeather(city, id) {
+      const widget = document.getElementById(id);
+      if (!widget) return;
+
+      fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(city)}&aqi=no`)
+        .then(response => response.json())
+        .then(data => {
+          if (!data || !data.current) throw new Error("Weather data unavailable");
+          widget.querySelector(".temp").textContent = `${Math.round(data.current.temp_f)}°F`;
+          widget.querySelector(".desc").textContent = data.current.condition.text;
+        })
+        .catch(() => {
+          widget.querySelector(".temp").textContent = "Unavailable";
+          widget.querySelector(".desc").textContent = "Please refresh later.";
+        });
+    }
+
+    weatherLocations.forEach(location => fetchWeather(location.city, location.id));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
