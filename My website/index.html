@@ -44,14 +44,46 @@
       color: var(--red-bright);
     }
 
-    header {
-      background:
-        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.7)),
-        radial-gradient(circle at top left, #cc0000 0, #300 35%, #000 75%);
-      padding: 4rem 1.2rem 3rem;
-      text-align: center;
-      border-bottom: 3px solid var(--red);
-    }
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--red);
+  background: #000;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.78)),
+    url("hurricane-radar-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: stormMotion 18s ease-in-out infinite alternate;
+  transform: scale(1.08);
+  z-index: 0;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes stormMotion {
+  0% {
+    transform: scale(1.08) translateX(0) translateY(0);
+    background-position: center;
+  }
+
+  100% {
+    transform: scale(1.13) translateX(-12px) translateY(-6px);
+    background-position: center top;
+  }
+}
 
     header h1 {
       font-size: clamp(2.2rem, 5vw, 4.5rem);
