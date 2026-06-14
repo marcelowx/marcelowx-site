@@ -225,6 +225,12 @@
       font-style: italic;
     }
 
+    .weather-link {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      padding: 0.65rem 0.9rem;
+    }
+
     iframe,
     img {
       width: 100%;
@@ -419,14 +425,38 @@
       <p class="section-intro">Live temperature snapshots for the Rio Grande Valley, South Texas coast, and Puerto Rico.</p>
 
       <div class="grid">
-        <div class="weather-widget" id="weather-mcallen"><h3>McAllen</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-harlingen"><h3>Harlingen</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-brownsville"><h3>Brownsville</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-weslaco"><h3>Weslaco</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-rio-grande-city"><h3>Rio Grande City</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-south-padre"><h3>South Padre Island</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-san-juan"><h3>San Juan, PR</h3><div class="temp">Loading...</div><div class="desc"></div></div>
-        <div class="weather-widget" id="weather-corpus"><h3>Corpus Christi</h3><div class="temp">Loading...</div><div class="desc"></div></div>
+        <div class="weather-widget" id="weather-mcallen">
+          <h3>McAllen</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=26.2034&lon=-98.2300" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-harlingen">
+          <h3>Harlingen</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=26.1906&lon=-97.6961" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-brownsville">
+          <h3>Brownsville</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=25.9017&lon=-97.4975" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-weslaco">
+          <h3>Weslaco</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=26.1595&lon=-97.9908" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-rio-grande-city">
+          <h3>Rio Grande City</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=26.3798&lon=-98.8203" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-south-padre">
+          <h3>South Padre Island</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=26.1118&lon=-97.1681" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-san-juan">
+          <h3>San Juan, PR</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=18.4655&lon=-66.1057" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
+        <div class="weather-widget" id="weather-corpus">
+          <h3>Corpus Christi</h3><div class="temp">Checking...</div><div class="desc">Latest hourly forecast from the National Weather Service.</div>
+          <a class="button secondary weather-link" href="https://forecast.weather.gov/MapClick.php?lat=27.8006&lon=-97.3964" target="_blank" rel="noopener">Open Latest Conditions</a>
+        </div>
       </div>
     </section>
 
@@ -609,37 +639,45 @@
   </footer>
 
   <script>
-    const apiKey = "45827ed8316e4a3d83064743252203";
-
     const weatherLocations = [
-      { city: "McAllen, TX", id: "weather-mcallen" },
-      { city: "Harlingen, TX", id: "weather-harlingen" },
-      { city: "Brownsville, TX", id: "weather-brownsville" },
-      { city: "Weslaco, TX", id: "weather-weslaco" },
-      { city: "Rio Grande City, TX", id: "weather-rio-grande-city" },
-      { city: "South Padre Island, TX", id: "weather-south-padre" },
-      { city: "San Juan, Puerto Rico", id: "weather-san-juan" },
-      { city: "Corpus Christi, TX", id: "weather-corpus" }
+      { name: "McAllen", id: "weather-mcallen", lat: 26.2034, lon: -98.2300 },
+      { name: "Harlingen", id: "weather-harlingen", lat: 26.1906, lon: -97.6961 },
+      { name: "Brownsville", id: "weather-brownsville", lat: 25.9017, lon: -97.4975 },
+      { name: "Weslaco", id: "weather-weslaco", lat: 26.1595, lon: -97.9908 },
+      { name: "Rio Grande City", id: "weather-rio-grande-city", lat: 26.3798, lon: -98.8203 },
+      { name: "South Padre Island", id: "weather-south-padre", lat: 26.1118, lon: -97.1681 },
+      { name: "San Juan, PR", id: "weather-san-juan", lat: 18.4655, lon: -66.1057 },
+      { name: "Corpus Christi", id: "weather-corpus", lat: 27.8006, lon: -97.3964 }
     ];
 
-    function fetchWeather(city, id) {
-      const widget = document.getElementById(id);
+    async function fetchWeather(location) {
+      const widget = document.getElementById(location.id);
       if (!widget) return;
 
-      fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(city)}&aqi=no`)
-        .then(response => response.json())
-        .then(data => {
-          if (!data || !data.current) throw new Error("Weather data unavailable");
-          widget.querySelector(".temp").textContent = `${Math.round(data.current.temp_f)}°F`;
-          widget.querySelector(".desc").textContent = data.current.condition.text;
-        })
-        .catch(() => {
-          widget.querySelector(".temp").textContent = "Unavailable";
-          widget.querySelector(".desc").textContent = "Please refresh later.";
-        });
+      try {
+        const pointResponse = await fetch(`https://api.weather.gov/points/${location.lat},${location.lon}`);
+        if (!pointResponse.ok) throw new Error("NWS point request failed");
+
+        const pointData = await pointResponse.json();
+        const hourlyUrl = pointData?.properties?.forecastHourly;
+        if (!hourlyUrl) throw new Error("Hourly forecast URL unavailable");
+
+        const forecastResponse = await fetch(hourlyUrl);
+        if (!forecastResponse.ok) throw new Error("NWS forecast request failed");
+
+        const forecastData = await forecastResponse.json();
+        const currentPeriod = forecastData?.properties?.periods?.[0];
+        if (!currentPeriod) throw new Error("Forecast period unavailable");
+
+        widget.querySelector(".temp").textContent = `${currentPeriod.temperature}°${currentPeriod.temperatureUnit}`;
+        widget.querySelector(".desc").textContent = currentPeriod.shortForecast;
+      } catch (error) {
+        widget.querySelector(".temp").textContent = "Tap below";
+        widget.querySelector(".desc").textContent = "Live data did not load here, but the official NWS page is available.";
+      }
     }
 
-    weatherLocations.forEach(location => fetchWeather(location.city, location.id));
+    weatherLocations.forEach(fetchWeather);
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
