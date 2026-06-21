@@ -564,18 +564,86 @@ header > * {
       </div>
 
 </section>
-      <div class="card" style="margin-top: 1.2rem;">
-        <h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
-        <p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
+    <style>
+  .climo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
 
-        <div class="grid">
-          <div><h3>June / Junio</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Atlantic named storm climatology" /></div>
-          <div><h3>July / Julio</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Atlantic named storm climatology" /></div>
-          <div><h3>August / Agosto</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Atlantic named storm climatology" /></div>
-          <div><h3>September / Septiembre</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Atlantic named storm climatology" /></div>
-          <div><h3>October / Octubre</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Atlantic named storm climatology" /></div>
-          <div><h3>November / Noviembre</h3><img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Atlantic named storm climatology" /></div>
-        </div>
+  .climo-item {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .climo-item h3 {
+    color: #ff3b3b;
+    margin-bottom: 14px;
+  }
+
+  .climo-item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 1000px) {
+    .climo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 650px) {
+    .climo-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
+
+<p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
+
+<div class="climo-grid">
+  <div class="climo-item">
+    <h3>June / Junio</h3>
+    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Atlantic named storm climatology" />
+  </div>
+
+  <div class="climo-item">
+    <h3>July / Julio</h3>
+    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Atlantic named storm climatology" />
+  </div>
+
+  <div class="climo-item">
+    <h3>August / Agosto</h3>
+    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Atlantic named storm climatology" />
+  </div>
+
+  <div class="climo-item">
+    <h3>September / Septiembre</h3>
+    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Atlantic named storm climatology" />
+  </div>
+
+  <div class="climo-item">
+    <h3>October / Octubre</h3>
+    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Atlantic named storm climatology" />
+  </div>
+
+  <div class="climo-item">
+    <h3>November / Noviembre</h3>
+    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Atlantic named storm climatology" />
+  </div>
+</div>
       </div>
     </section>
 
