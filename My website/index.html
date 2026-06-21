@@ -563,31 +563,41 @@ header > * {
         </div>
       </div>
 
-</section>
-    <style>
-  .climo-grid {
+<style>
+  #atlantic-climatology-fixed {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  #atlantic-climatology-fixed .card {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  #atlantic-climatology-fixed .climo-month-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
     box-sizing: border-box;
   }
 
-  .climo-item {
+  #atlantic-climatology-fixed .climo-month {
+    min-width: 0;
     width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
   }
 
-  .climo-item h3 {
+  #atlantic-climatology-fixed .climo-month h3 {
     color: #ff3b3b;
     margin-bottom: 14px;
   }
 
-  .climo-item img {
+  #atlantic-climatology-fixed .climo-month img {
     width: 100%;
     max-width: 100%;
     height: auto;
@@ -597,55 +607,57 @@ header > * {
   }
 
   @media (max-width: 1000px) {
-    .climo-grid {
-      grid-template-columns: repeat(2, 1fr);
+    #atlantic-climatology-fixed .climo-month-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 650px) {
-    .climo-grid {
+    #atlantic-climatology-fixed .climo-month-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
 
-<h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
+<section id="atlantic-climatology-fixed">
+  <div class="card">
+    <h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
 
-<p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
+    <p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
 
-<div class="climo-grid">
-  <div class="climo-item">
-    <h3>June / Junio</h3>
-    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Atlantic named storm climatology" />
-  </div>
-
-  <div class="climo-item">
-    <h3>July / Julio</h3>
-    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Atlantic named storm climatology" />
-  </div>
-
-  <div class="climo-item">
-    <h3>August / Agosto</h3>
-    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Atlantic named storm climatology" />
-  </div>
-
-  <div class="climo-item">
-    <h3>September / Septiembre</h3>
-    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Atlantic named storm climatology" />
-  </div>
-
-  <div class="climo-item">
-    <h3>October / Octubre</h3>
-    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Atlantic named storm climatology" />
-  </div>
-
-  <div class="climo-item">
-    <h3>November / Noviembre</h3>
-    <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Atlantic named storm climatology" />
-  </div>
-</div>
+    <div class="climo-month-grid">
+      <div class="climo-month">
+        <h3>June / Junio</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Atlantic named storm climatology" />
       </div>
-    </section>
+
+      <div class="climo-month">
+        <h3>July / Julio</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>August / Agosto</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>September / Septiembre</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>October / Octubre</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>November / Noviembre</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Atlantic named storm climatology" />
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="portfolio">
       <h2>🗺️ ArcGIS & Geospatial Portfolio</h2>
