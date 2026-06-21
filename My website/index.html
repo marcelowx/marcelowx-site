@@ -562,7 +562,68 @@ header > * {
           <p>Wind shear is one of the key atmospheric factors that can limit or support tropical development.</p>
         </div>
       </div>
+<style>
+  #tropical-weather-center .map-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+  }
 
+  #tropical-weather-center iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  #tropical-weather-center .image-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+</style>
+
+<section id="tropical-weather-center">
+  <h2>Tropical Weather Center</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Rain & Thunder Forecast</h3>
+      <div class="map-container">
+        <iframe
+          src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=5&overlay=rain&product=ecmwf&level=surface&lat=28.478&lon=-92.285"
+          frameborder="0"
+          scrolling="no"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Saharan Air Layer</h3>
+      <div class="map-container">
+        <iframe
+          src="https://tropic.ssec.wisc.edu/real-time/sal/g16split/movies/goes16split.html"
+          frameborder="0"
+          scrolling="no"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Atlantic Tropical Activity Climatology</h3>
+      <div class="map-container image-map">
+        <img
+          src="https://www.nhc.noaa.gov/climo/images/2021climo/AtlanticCampfire_sm.png"
+          alt="Atlantic tropical cyclone climatology map">
+      </div>
+    </div>
+  </div>
+</section>
       <div class="card" style="margin-top: 1.2rem;">
         <h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
         <p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
