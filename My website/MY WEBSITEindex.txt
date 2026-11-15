@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Marcelowx.com | Bilingual Weather, Climate & Geospatial Science</title>
+  <meta name="description" content="Bilingual weather updates, tropical meteorology, climate storytelling, and geospatial science from meteorologist Marcelo Rivera González. Serving the Rio Grande Valley, South Texas, Puerto Rico, and tropical weather audiences." />
+  <meta name="keywords" content="MarceloWXTV, Marcelo Rivera, bilingual meteorologist, Rio Grande Valley weather, South Texas weather, Puerto Rico weather, tropical meteorology, hurricane science, climate change, geospatial science, ArcGIS portfolio" />
+  <meta name="author" content="Marcelo Rivera González" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #111;
+      --panel-soft: #181818;
+      --red: #b30000;
+      --red-bright: #ff3333;
+      --text: #ffffff;
+      --muted: #cccccc;
+      --line: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--red-bright);
+    }
+
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.2rem 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--red);
+  background: #000;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.78)),
+    url("hurricane-radar-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: stormMotion 18s ease-in-out infinite alternate;
+  transform: scale(1.08);
+  z-index: 0;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes stormMotion {
+  0% {
+    transform: scale(1.08) translateX(0) translateY(0);
+    background-position: center;
+  }
+
+  100% {
+    transform: scale(1.13) translateX(-12px) translateY(-6px);
+    background-position: center top;
+  }
+}
+
+    header h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      margin: 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: 1rem auto 0;
+      color: #f1f1f1;
+      font-size: 1.1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      background: #e60000;
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border: 1px solid var(--red-bright);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(17, 17, 17, 0.97);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      padding: 0.9rem 1rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      background: var(--red);
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.2rem;
+    }
+
+    h2 {
+      color: var(--red-bright);
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 0.6rem;
+      margin-top: 0;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    h3 {
+      color: #ff6666;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 850px;
+    }
+
+    .profile-img {
+      display: block;
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 1.2rem;
+      border: 4px solid var(--red);
+      box-shadow: 0 0 30px rgba(179, 0, 0, 0.55);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--red);
+      border-radius: 14px;
+      padding: 1.2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .card p:last-child,
+    .card ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .callout {
+      background: linear-gradient(135deg, rgba(179,0,0,0.35), rgba(17,17,17,0.95));
+      border: 1px solid var(--red);
+      border-radius: 14px;
+      padding: 1.2rem;
+      margin-top: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .social-icons {
+      text-align: center;
+      margin-top: 1.2rem;
+    }
+
+    .social-icons a {
+      margin: 0 0.6rem;
+      color: #fff;
+      font-size: 1.9rem;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: var(--red-bright);
+    }
+
+    .weather-widget {
+      background: var(--panel-soft);
+      border: 1px solid var(--red);
+      border-radius: 14px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .weather-widget h3 {
+      margin-top: 0;
+      color: #ff6666;
+    }
+
+    .temp {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .weather-link {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      padding: 0.65rem 0.9rem;
+    }
+
+    iframe,
+    img {
+      width: 100%;
+      border: none;
+      margin-top: 1rem;
+      border-radius: 12px;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(430px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+      align-items: start;
+    }
+
+    .map-card {
+      overflow: hidden;
+    }
+
+    .map-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: none;
+      object-fit: contain;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    form input,
+    form textarea,
+    form select {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #555;
+      border-radius: 8px;
+      background: #0b0b0b;
+      color: #fff;
+      font: inherit;
+    }
+
+    form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    form button {
+      padding: 0.9rem 1rem;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    form button:hover {
+      background: #e60000;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 2rem 1rem;
+      background: #070707;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 3rem 1rem 2.5rem;
+      }
+
+      nav {
+        position: static;
+      }
+
+      nav a {
+        width: 50%;
+        text-align: center;
+        padding: 0.75rem 0.4rem;
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 2.2rem 1rem;
+      }
+
+      .map-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MarceloWXTV</h1>
+    <p>Bilingual weather, tropical meteorology, climate storytelling, and geospatial science for the Rio Grande Valley, South Texas, Puerto Rico, and beyond.</p>
+    <div class="hero-buttons">
+      <a class="button" href="#current-weather">Check Current Weather</a>
+      <a class="button secondary" href="#portfolio">View Portfolio</a>
+      <a class="button secondary" href="#contact">Contact Marcelo</a>
+    </div>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#rgv-weather">RGV Weather</a>
+    <a href="#current-weather">Temperatures</a>
+    <a href="#radar">Radar & Maps</a>
+    <a href="#tropical">Tropical</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#videos">Videos</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About Me / Sobre Mí</h2>
+      <img src="BA6173E3-9C06-42F6-893D-423C6AA02779 (2).jpeg?v=3" alt="Meteorologist Marcelo Rivera González" class="profile-img" />
+
+      <div class="grid">
+        <div class="card">
+          <h3>English</h3>
+<p>I am Marcelo Rivera González, a bilingual meteorologist and science communicator. My work focuses on clear, useful, and responsible weather information for communities across the Rio Grande Valley, South Texas, Puerto Rico, and audiences interested in tropical meteorology.</p>
+
+<p>My academic background includes a Bachelor’s degree in Business Administration, a Master’s degree in Labor and Industrial Relations, and a Bachelor’s degree in Meteorology. I am currently pursuing a second Master’s degree in Geography, Climate Science, and Geospatial Science.</p>
+
+<p>Before becoming a meteorologist, I worked for nearly a decade in higher education administration, serving as a University Registrar for universities in Puerto Rico and Texas. That experience shaped how I communicate today: with service, clarity, education, and community impact at the center.</p>
+
+<p>I later worked as a meteorologist and climate change reporter for NBCUniversal in California. Today, I serve as a meteorologist for NBC23 and CBS4 in the Rio Grande Valley, Texas, where I continue my mission of helping people understand the weather and make informed decisions before, during, and after impactful weather events.</p>
+        </div>
+
+        <div class="card">
+          <h3>Español</h3>
+<p>Soy Marcelo Rivera González, meteorólogo bilingüe y comunicador científico. Mi trabajo se enfoca en ofrecer información del tiempo clara, útil y responsable para comunidades del Valle del Río Grande, el sur de Texas, Puerto Rico y audiencias interesadas en la meteorología tropical.</p>
+
+<p>Mi preparación académica incluye un Bachillerato (licenciatura) en Administración de Empresas, una Maestría en Relaciones Laborales e Industriales y un Bachillerato (licenciatura) en Meteorología. Actualmente curso una segunda maestría en Geografía, Ciencias del Clima y Ciencia Geoespacial.</p>
+
+<p>Antes de convertirme en meteorólogo, trabajé por casi una década en la administración universitaria, sirviendo como Registrador Universitario en instituciones de educación superior en Puerto Rico y Texas. Esa experiencia moldeó la forma en que comunico hoy: con servicio, claridad, educación e impacto comunitario como prioridad.</p>
+
+<p>Más adelante, trabajé como meteorólogo y reportero de cambio climático para NBCUniversal en California. Actualmente, trabajo como meteorólogo para NBC23 y CBS4 en el Valle del Río Grande, Texas, donde continúo mi misión de ayudar a las personas a entender el tiempo y tomar decisiones informadas antes, durante y después de eventos meteorológicos de impacto.</p>        
+        </div>
+      </div>
+
+      <div class="callout">
+        “Just like dreams, opportunities arrive, yes — but we can also go after them.”<br />
+        “Así como los sueños, las oportunidades llegan, sí — pero también podemos salir a buscarlas.”
+      </div>
+
+      <div class="social-icons" aria-label="Social media links">
+        <a href="https://www.instagram.com/marcelowxtv/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@marcelowxtv" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61553970173817" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.tiktok.com/@marcelowxtv" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </section>
+
+    <section id="rgv-weather">
+      <h2>RGV Weather Focus / Enfoque del Tiempo en el Valle</h2>
+      <p class="section-intro">Weather in the Rio Grande Valley can change fast, from extreme heat and humidity to sea breeze storms, tropical moisture, coastal flooding, and hurricane season impacts. This section highlights the local weather themes I track closely.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>🌡️ Heat & Humidity</h3>
+          <p>Updates focused on heat index, hydration, outdoor safety, and the local impacts of humidity across McAllen, Harlingen, Brownsville, Weslaco, Starr County, and the coast.</p>
+        </div>
+        <div class="card">
+          <h3>⛈️ Storms & Flooding</h3>
+          <p>Clear explanations of thunderstorms, heavy rain, isolated flooding, severe weather threats, and why not every storm affects every city the same way.</p>
+        </div>
+        <div class="card">
+          <h3>🌊 Coastal Weather</h3>
+          <p>Forecast context for South Padre Island, coastal winds, rip currents, beach plans, sea breeze showers, and tropical moisture moving into deep South Texas.</p>
+        </div>
+        <div class="card">
+          <h3>🌀 Tropical Awareness</h3>
+          <p>Hurricane science, tropical outlooks, preparedness messaging, and practical explanations without hype or panic.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="current-weather">
+      <h2>🌡️ Current Temperatures / Temperaturas Actuales</h2>
+      <p class="section-intro">Live temperature snapshots for the Rio Grande Valley, South Texas coast, and Puerto Rico.</p>
+
+     <!-- MarceloWXTV RGV live temperature map
+     Paste the <section> into your page, copy the <style> block into your CSS,
+     and copy the <script> block before </body>. This complete file is also a preview. -->
+
+<section id="rgv-live-temperatures" class="rgv-map-card">
+  <div class="rgv-map-topbar">
+    <a class="rgv-map-brand" href="#top" aria-label="MarceloWXTV home">
+      <span class="brand-slashes">///</span> MarceloWXTV
+    </a>
+    <a class="rgv-alert-link" href="https://www.weather.gov/alerts" target="_blank" rel="noopener noreferrer">
+      <span aria-hidden="true">⚠</span> Alerts
+    </a>
+  </div>
+
+  <div class="rgv-map-heading">
+    <div>
+      <h2>Current Temperatures</h2>
+      <p>Temperaturas actuales</p>
+    </div>
+    <button class="rgv-refresh" id="rgv-map-refresh" type="button">
+      <span aria-hidden="true">↻</span> <span id="rgv-map-updated">Updating…</span>
+    </button>
+  </div>
+
+  <p class="rgv-map-hint">Swipe horizontally on smaller screens to view the full map.</p>
+
+  <div class="rgv-map-scroll" tabindex="0" aria-label="Scrollable Rio Grande Valley temperature map">
+    <div class="rgv-map-canvas">
+      <svg class="rgv-map-svg" viewBox="0 0 1200 620" role="img" aria-labelledby="rgv-map-title rgv-map-description">
+        <title id="rgv-map-title">Rio Grande Valley current temperatures</title>
+        <desc id="rgv-map-description">Starr, Hidalgo, Willacy, and Cameron counties with current temperatures for six cities.</desc>
+        <defs>
+          <linearGradient id="rgv-land" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#24282b" />
+            <stop offset="1" stop-color="#111416" />
+          </linearGradient>
+          <filter id="rgv-glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+
+        <rect width="1200" height="620" fill="#090c0e" />
+
+        <!-- Four-county outline based on the supplied RGV reference. -->
+        <g transform="translate(-168 -210) scale(1.2)" class="county-shapes">
+          <path class="county" d="M198 355 L230 332 L265 302 L286 255 L550 254 L441 483 L409 484 L384 464 L363 447 L345 429 L324 421 L301 421 L280 418 L266 413 L245 413 L228 410 L227 380 L214 377 L199 366 Z" />
+          <path class="county" d="M550 254 L699 255 L699 326 L707 329 L706 358 L694 358 L693 391 L750 399 L750 566 L716 559 L682 564 L656 558 L630 562 L609 556 L578 548 L564 538 L553 531 L542 539 L533 525 L516 523 L506 507 L491 503 L472 510 L456 501 L441 497 L425 485 L409 484 L441 483 Z" />
+          <path class="county" d="M699 326 L707 329 L930 333 L940 369 L920 390 L940 424 L920 439 L894 460 L890 454 L750 444 L750 399 L693 391 L694 358 L706 358 Z" />
+          <path class="county" d="M750 444 L890 454 L894 460 L920 439 L940 424 L961 440 L1009 554 L1032 581 L1046 603 L1018 602 L1005 596 L993 615 L990 639 L956 640 L946 656 L918 651 L883 627 L858 615 L848 592 L826 588 L801 582 L775 575 L750 566 Z" />
+
+          <path class="county-outline" d="M198 355 L230 332 L265 302 L286 255 L550 254 L699 255 L699 326 L707 329 L930 333 L940 369 L920 390 L940 424 L961 440 L1009 554 L1032 581 L1046 603 L1018 602 L1005 596 L993 615 L990 639 L956 640 L946 656 L918 651 L883 627 L858 615 L848 592 L826 588 L801 582 L775 575 L750 566 L716 559 L682 564 L656 558 L630 562 L609 556 L578 548 L564 538 L553 531 L542 539 L533 525 L516 523 L506 507 L491 503 L472 510 L456 501 L441 497 L425 485 L409 484 L384 464 L363 447 L345 429 L324 421 L301 421 L280 418 L266 413 L245 413 L228 410 L227 380 L214 377 L199 366 Z" />
+          <path class="county-divider" d="M550 254 L441 483" />
+          <path class="county-divider" d="M699 326 L707 329 L706 358 L694 358 L693 391 L750 399 L750 566" />
+          <path class="county-divider" d="M750 444 L890 454 L894 460 L920 439" />
+
+          <text class="county-label" x="425" y="355">Starr County</text>
+          <text class="county-label" x="630" y="425">Hidalgo County</text>
+          <text class="county-label" x="820" y="390">Willacy County</text>
+          <text class="county-label" x="880" y="545">Cameron County</text>
+        </g>
+      </svg>
+
+      <div class="map-marker marker-rgc"><strong id="rgv-temp-rgc">--°</strong><span>Rio Grande City</span><small id="rgv-condition-rgc"> </small></div>
+      <div class="map-marker marker-mcallen"><strong id="rgv-temp-mcallen">--°</strong><span>McAllen</span><small id="rgv-condition-mcallen"> </small></div>
+      <div class="map-marker marker-weslaco"><strong id="rgv-temp-weslaco">--°</strong><span>Weslaco</span><small id="rgv-condition-weslaco"> </small></div>
+      <div class="map-marker marker-harlingen"><strong id="rgv-temp-harlingen">--°</strong><span>Harlingen</span><small id="rgv-condition-harlingen"> </small></div>
+      <div class="map-marker marker-brownsville"><strong id="rgv-temp-brownsville">--°</strong><span>Brownsville</span><small id="rgv-condition-brownsville"> </small></div>
+      <div class="map-marker marker-spi"><strong id="rgv-temp-spi">--°</strong><span>South Padre Island</span><small id="rgv-condition-spi"> </small></div>
+    </div>
+  </div>
+
+  <p class="rgv-map-source">Live observations from the National Weather Service. Map outline follows the provided four-county reference.</p>
+</section>
+
+<style>
+  .rgv-map-card { overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; background: #090b0d; box-shadow: 0 16px 38px rgba(0,0,0,.38); margin: 1.6rem auto; max-width: 1100px; }
+  .rgv-map-topbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.8rem 1.2rem; border-bottom:2px solid #b30000; background:#030303; }
+  .rgv-map-brand { color:#fff; font-size:1.2rem; font-weight:900; font-style:italic; text-decoration:none; }
+  .brand-slashes { color:#ff3333; letter-spacing:-.16em; margin-right:.55rem; }
+  .rgv-alert-link { display:inline-flex; align-items:center; gap:.5rem; color:#fff; font-weight:800; text-decoration:none; padding:.45rem .8rem; border:1px solid rgba(255,255,255,.2); border-radius:999px; }
+  .rgv-alert-link span { color:#ff3333; }
+  .rgv-map-heading { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.9rem 1.2rem; background:linear-gradient(100deg,rgba(179,0,0,.42),rgba(12,12,12,.94) 60%); }
+  .rgv-map-heading h2 { margin:0; color:#fff; border:0; font-size:clamp(1.15rem,3vw,1.9rem); text-transform:uppercase; font-style:italic; letter-spacing:.015em; }
+  .rgv-map-heading p { margin:-.2rem 0 0; color:#eee; font-size:1rem; font-style:italic; }
+  .rgv-refresh { display:inline-flex; align-items:center; gap:.55rem; flex:0 0 auto; padding:.55rem .8rem; background:#a90000; border:1px solid #ff3333; border-radius:9px; color:#fff; font:inherit; font-size:.86rem; font-weight:800; cursor:pointer; }
+  .rgv-refresh:disabled { opacity:.75; cursor:wait; }
+  .rgv-map-hint { display:none; margin:.6rem 1rem 0; color:#bbb; font-size:.8rem; }
+  .rgv-map-scroll { overflow-x:auto; scrollbar-color:#a00 #171717; }
+  .rgv-map-canvas { position:relative; width:100%; min-width:0; aspect-ratio:1200 / 620; overflow:hidden; background:radial-gradient(ellipse at 55% 50%,#15191c 0,#080a0c 78%); }
+  .rgv-map-svg { position:absolute; inset:0; display:block; width:100%; height:100%; }
+  .county { fill:url(#rgv-land); stroke:#ee303b; stroke-width:2.3; stroke-linejoin:round; }
+  .county-outline { fill:none; stroke:#ff2635; stroke-width:3.5; stroke-linejoin:round; filter:url(#rgv-glow); }
+  .county-divider { fill:none; stroke:#f0444c; stroke-width:2.6; stroke-linejoin:round; }
+  .county-label { fill:rgba(255,255,255,.76); font-family:"Segoe UI",Arial,sans-serif; font-size:19px; font-style:italic; font-weight:700; text-anchor:middle; paint-order:stroke; stroke:rgba(0,0,0,.58); stroke-width:3px; stroke-linejoin:round; }
+  .map-marker { position:absolute; z-index:2; display:flex; min-width:108px; flex-direction:column; align-items:center; transform:translate(-50%,-100%); padding:.28rem .58rem .34rem; border:1px solid #ff4851; border-radius:9px; background:linear-gradient(145deg,rgba(196,0,10,.98),rgba(105,0,0,.98)); box-shadow:0 4px 16px rgba(0,0,0,.55),0 0 12px rgba(220,0,15,.18); color:#fff; text-align:center; line-height:1.15; }
+  .map-marker::after { content:""; position:absolute; left:50%; top:100%; width:2px; height:15px; background:#fff; transform:translateX(-50%); }
+  .map-marker strong { font-size:1.42rem; line-height:1; font-weight:900; }
+  .map-marker span { margin-top:.18rem; font-size:.78rem; font-weight:800; white-space:nowrap; }
+  .map-marker small { margin-top:.08rem; color:#f5dddd; font-size:.64rem; white-space:nowrap; }
+  .marker-rgc { left:20.5%; top:48.5%; } .marker-mcallen { left:43%; top:64%; } .marker-weslaco { left:57%; top:78%; } .marker-harlingen { left:69%; top:62%; } .marker-brownsville { left:77%; top:91%; } .marker-spi { left:89%; top:57%; }
+  .rgv-map-source { margin:0; padding:.65rem 1rem .85rem; color:#aaa; font-size:.78rem; }
+  @media (max-width:700px) { .rgv-map-heading { padding:.75rem .85rem; } .rgv-map-heading p { font-size:.85rem; } .rgv-refresh { max-width:145px; padding:.48rem .58rem; font-size:.72rem; } .rgv-map-hint { display:block; } .rgv-map-canvas { min-width:680px; } }
+</style>
+
+<script>
+(() => {
+  const locations = [
+    { slug: "rgc", lat: 26.3798, lon: -98.8203 },
+    { slug: "mcallen", lat: 26.2034, lon: -98.2300 },
+    { slug: "weslaco", lat: 26.1595, lon: -97.9908 },
+    { slug: "harlingen", lat: 26.1906, lon: -97.6961 },
+    { slug: "brownsville", lat: 25.9017, lon: -97.4975 },
+    { slug: "spi", lat: 26.1118, lon: -97.1681 }
+  ];
+
+  const apiHeaders = { Accept: "application/geo+json" };
+
+  async function latestObservation(location) {
+    const point = await fetch(`https://api.weather.gov/points/${location.lat},${location.lon}`, { headers: apiHeaders, cache: "no-store" });
+    if (!point.ok) throw new Error("Point lookup failed");
+    const pointData = await point.json();
+    const stations = await fetch(pointData.properties.observationStations, { headers: apiHeaders, cache: "no-store" });
+    if (!stations.ok) throw new Error("Station lookup failed");
+    const stationData = await stations.json();
+
+    for (const feature of (stationData.features || []).slice(0, 4)) {
+      const stationId = feature?.properties?.stationIdentifier;
+      if (!stationId) continue;
+      try {
+        const response = await fetch(`https://api.weather.gov/stations/${stationId}/observations/latest`, { headers: apiHeaders, cache: "no-store" });
+        if (!response.ok) continue;
+        const observation = await response.json();
+        const metricValue = observation?.properties?.temperature?.value;
+        if (typeof metricValue !== "number") continue;
+        return { temperature: Math.round((metricValue * 9 / 5) + 32), condition: observation.properties.textDescription || "" };
+      } catch (_) { /* Try the next nearby station. */ }
+    }
+    throw new Error("No observation available");
+  }
+
+  async function refreshMap() {
+    const button = document.getElementById("rgv-map-refresh");
+    const updated = document.getElementById("rgv-map-updated");
+    if (button) button.disabled = true;
+    if (updated) updated.textContent = "Updating…";
+
+    await Promise.all(locations.map(async (location) => {
+      const temp = document.getElementById(`rgv-temp-${location.slug}`);
+      const condition = document.getElementById(`rgv-condition-${location.slug}`);
+      try {
+        const current = await latestObservation(location);
+        temp.textContent = `${current.temperature}°`;
+        condition.textContent = current.condition;
+      } catch (_) {
+        if (temp.textContent === "--°") temp.textContent = "—°";
+        condition.textContent = "";
+      }
+    }));
+
+    const time = new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(new Date());
+    if (updated) updated.textContent = `Updated ${time}`;
+    if (button) button.disabled = false;
+  }
+
+  document.getElementById("rgv-map-refresh")?.addEventListener("click", refreshMap);
+  refreshMap();
+  window.setInterval(refreshMap, 10 * 60 * 1000);
+})();
+</script>
+
+    <section id="radar">
+      <h2>🛰️ Radar & Weather Maps / Mapas y Radares</h2>
+      <p class="section-intro">.</p>
+
+<div class="card map-card">
+  <h3>🌩️ National Rain & Thunder Map</h3>
+
+  <iframe
+    title="National Rain and Thunder Weather Map"
+    src="https://embed.windy.com/embed.html?type=map&amp;location=coordinates&amp;metricRain=in&amp;metricTemp=%C2%B0F&amp;metricWind=mph&amp;zoom=4&amp;overlay=rain&amp;product=ecmwf&amp;level=surface&amp;lat=39.0&amp;lon=-98.0"
+    style="width:100%; height:450px; border:0; border-radius:8px;"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
+
+  <p>
+    Explore rainfall and thunderstorm forecasts
+    across the United States using Windy's
+    interactive weather map.
+  </p>
+
+  <div class="map-actions">
+    <a class="button"
+       href="https://www.windy.com/?rain,39.0,-98.0,4"
+       target="_blank"
+       rel="noopener noreferrer">
+      Open Full National Weather Map
+    </a>
+  </div>
+</div>
+
+      <div class="map-grid">
+        <div class="card map-card">
+          <h3>📡 Brownsville / RGV Radar Loop</h3>
+          <img class="map-image" src="https://radar.weather.gov/ridge/standard/KBRO_loop.gif" alt="Brownsville and Rio Grande Valley radar loop" />
+          <p>Best quick radar view for the Rio Grande Valley and Deep South Texas.</p>
+          <div class="map-actions">
+            <a class="button" href="https://radar.weather.gov/station/KBRO/standard" target="_blank" rel="noopener">Open Interactive KBRO Radar</a>
+          </div>
+        </div>
+
+        <div class="card map-card">
+          <h3>🇵🇷 Puerto Rico Radar Loop</h3>
+          <img class="map-image" src="https://radar.weather.gov/ridge/standard/TJUA_loop.gif" alt="Puerto Rico radar loop" />
+          <p>Radar loop for Puerto Rico and nearby Caribbean waters.</p>
+          <div class="map-actions">
+            <a class="button" href="https://radar.weather.gov/station/TJUA/standard" target="_blank" rel="noopener">Open Interactive TJUA Radar</a>
+          </div>
+        </div>
+
+        <div class="card map-card">
+          <h3>🌎 National Forecast Map</h3>
+          <img class="map-image" src="https://www.wpc.ncep.noaa.gov/noaa/noaad1.gif" alt="NOAA national forecast map" />
+          <p>Official national forecast map from NOAA's Weather Prediction Center.</p>
+          <div class="map-actions">
+            <a class="button" href="https://www.wpc.ncep.noaa.gov/" target="_blank" rel="noopener">Open WPC Forecasts</a>
+          </div>
+        </div>
+
+        <div class="card map-card">
+          <h3>🛰️ Atlantic Satellite View</h3>
+          <img class="map-image" src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/SECTOR/taw/Sandwich/GOES16-TAW-Sandwich-900x540.gif" alt="GOES Atlantic satellite loop" />
+          <p>Satellite view for monitoring tropical waves, moisture, and systems across the tropical Atlantic.</p>
+          <div class="map-actions">
+            <a class="button" href="https://www.star.nesdis.noaa.gov/GOES/sector.php?sat=G16&sector=taw" target="_blank" rel="noopener">Open NOAA Satellite</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tropical">
+      <h2>🌀 Tropical Weather Center / Centro de Meteorología Tropical</h2>
+      <p class="section-intro">A bilingual hub for hurricane science, tropical outlooks, and preparedness education. The goal is simple: useful tropical information without fear-based hype.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>🗺️ Atlantic Tropical Weather Outlook</h3>
+          <img src="https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png" alt="National Hurricane Center Atlantic Tropical Weather Outlook" />
+          <p><a href="https://www.nhc.noaa.gov/gtwo.php?basin=atlc&fdays=7" target="_blank" rel="noopener">Open the latest NHC Atlantic outlook</a></p>
+        </div>
+
+        <div class="card">
+          <h3>💨 Tropical Wind Shear</h3>
+          <img src="https://tropic.ssec.wisc.edu/real-time/atlantic/winds/wg8shr.GIF" alt="Tropical Atlantic wind shear map" />
+          <p>Wind shear is one of the key atmospheric factors that can limit or support tropical development.</p>
+        </div>
+      </div>
+
+<style>
+  #atlantic-climatology-fixed {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  #atlantic-climatology-fixed .card {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  #atlantic-climatology-fixed .climo-month-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #atlantic-climatology-fixed .climo-month {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #atlantic-climatology-fixed .climo-month h3 {
+    color: #ff3b3b;
+    margin-bottom: 14px;
+  }
+
+  #atlantic-climatology-fixed .climo-month img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 1000px) {
+    #atlantic-climatology-fixed .climo-month-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 650px) {
+    #atlantic-climatology-fixed .climo-month-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section id="atlantic-climatology-fixed">
+  <div class="card">
+    <h3>📊 Atlantic Hurricane Season Climatology / Climatología de la Temporada de Huracanes del Atlántico</h3>
+
+    <p>Monthly hurricane season context helps explain why tropical activity is not evenly distributed from June through November.</p>
+
+    <div class="climo-month-grid">
+      <div class="climo-month">
+        <h3>June / Junio</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jun.jpg" alt="June Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>July / Julio</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_jul.jpg" alt="July Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>August / Agosto</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_aug.jpg" alt="August Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>September / Septiembre</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_sep.jpg" alt="September Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>October / Octubre</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_oct.jpg" alt="October Atlantic named storm climatology" />
+      </div>
+
+      <div class="climo-month">
+        <h3>November / Noviembre</h3>
+        <img src="https://www.nhc.noaa.gov/climo/images/2021climo/atl_climo_ns_nov.jpg" alt="November Atlantic named storm climatology" />
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="portfolio">
+      <h2>🗺️ ArcGIS & Geospatial Portfolio</h2>
+      <p class="section-intro">My geospatial work connects weather, climate risk, flooding, water resources, and community vulnerability through maps, analysis, and visual storytelling.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Hurricane Flood Risk Mapping</h3>
+          <p>Geospatial analysis focused on hurricane flood risk in the Rio Grande Valley, including Cameron, Hidalgo, Willacy, and Starr counties.</p>
+          <a href="https://storymaps.arcgis.com/stories/b76d486e1d8b40f580b51e5eb0188f08">View ArcGIS StoryMap</a>
+        </div>
+        <div class="card">
+          <h3>Climate & Community Risk</h3>
+          <p>Mapping projects that explore climate change, extreme rainfall, heat, coastal hazards, water access, and the communities most affected.</p>
+        </div>
+        <div class="card">
+          <h3>ArcGIS Storytelling</h3>
+          <p>Maps and web-based projects designed to make complex weather and climate topics easier to understand for the public.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <h2>🎥 Weather Videos & Social Media</h2>
+      <p class="section-intro">Follow MarceloWXTV for bilingual, simple, and practical weather explainers, tropical updates, hurricane science, and local RGV forecasts.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>TikTok</h3>
+          <p>Short weather explainers, tropical updates, and RGV-focused weather content.</p>
+          <a class="button" href="https://www.tiktok.com/@marcelowxtv" target="_blank" rel="noopener">Visit TikTok</a>
+        </div>
+        <div class="card">
+          <h3>Instagram</h3>
+          <p>Weather graphics, video updates, and behind-the-scenes science communication.</p>
+          <a class="button" href="https://www.instagram.com/marcelowxtv/" target="_blank" rel="noopener">Visit Instagram</a>
+        </div>
+        <div class="card">
+          <h3>YouTube</h3>
+          <p>Longer weather explainers, tropical education, and bilingual science content.</p>
+          <a class="button" href="https://www.youtube.com/@marcelowxtv" target="_blank" rel="noopener">Visit YouTube</a>
+        </div>
+        <div class="card">
+          <h3>Facebook</h3>
+          <p>Community updates, weather posts, and local forecast information.</p>
+          <a class="button" href="https://www.facebook.com/profile.php?id=61553970173817" target="_blank" rel="noopener">Visit Facebook</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>🤝 Services & Collaborations / Servicios y Colaboraciones</h2>
+      <p class="section-intro">Available for bilingual weather communication, educational presentations, community events, climate storytelling, and geospatial science projects.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>School & Community Visits</h3>
+          <p>Weather, hurricanes, climate, and STEM presentations for schools, community groups, and public events.</p>
+        </div>
+        <div class="card">
+          <h3>Bilingual Weather Content</h3>
+          <p>English and Spanish scripts, videos, explainers, and weather safety messaging for digital platforms.</p>
+        </div>
+        <div class="card">
+          <h3>Weather-Aware Business Support</h3>
+          <p>Custom weather communication support for local organizations, events, construction, real estate, outdoor planning, and community outreach.</p>
+        </div>
+        <div class="card">
+          <h3>GIS & Climate Storytelling</h3>
+          <p>Maps, story maps, and geospatial analysis focused on climate risk, flooding, hurricanes, heat, and water resources.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact / Contacto</h2>
+      <p class="section-intro">For collaborations, school visits, weather services, media projects, GIS work, or general messages, use the form below.</p>
+
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="text" name="name" placeholder="Your Name / Nombre" required />
+        <input type="email" name="email" placeholder="Your Email / Correo electrónico" required />
+        <select name="topic" aria-label="Message topic">
+          <option value="General message">General message / Mensaje general</option>
+          <option value="School or community visit">School or community visit / Visita escolar o comunitaria</option>
+          <option value="Weather services">Weather services / Servicios del tiempo</option>
+          <option value="GIS or climate project">GIS or climate project / Proyecto GIS o climático</option>
+          <option value="Media collaboration">Media collaboration / Colaboración de medios</option>
+        </select>
+        <textarea name="message" placeholder="Your Message / Tu mensaje" required></textarea>
+        <button type="submit">Send Message / Enviar Mensaje</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> MarceloWXTV · Weather, climate, and geospatial science communication.</p>
+    <p>For life-threatening weather, always follow official warnings from the National Weather Service, National Hurricane Center, and local emergency management.</p>
+  </footer>
+
+  <script>
+    const weatherLocations = [
+      { name: "McAllen", id: "weather-mcallen", lat: 26.2034, lon: -98.2300 },
+      { name: "Harlingen", id: "weather-harlingen", lat: 26.1906, lon: -97.6961 },
+      { name: "Brownsville", id: "weather-brownsville", lat: 25.9017, lon: -97.4975 },
+      { name: "Weslaco", id: "weather-weslaco", lat: 26.1595, lon: -97.9908 },
+      { name: "Rio Grande City", id: "weather-rio-grande-city", lat: 26.3798, lon: -98.8203 },
+      { name: "South Padre Island", id: "weather-south-padre", lat: 26.1118, lon: -97.1681 },
+      { name: "San Juan, PR", id: "weather-san-juan", lat: 18.4655, lon: -66.1057 },
+      { name: "Corpus Christi", id: "weather-corpus", lat: 27.8006, lon: -97.3964 }
+    ];
+
+    async function fetchWeather(location) {
+      const widget = document.getElementById(location.id);
+      if (!widget) return;
+
+      try {
+        const pointResponse = await fetch(`https://api.weather.gov/points/${location.lat},${location.lon}`);
+        if (!pointResponse.ok) throw new Error("NWS point request failed");
+
+        const pointData = await pointResponse.json();
+        const hourlyUrl = pointData?.properties?.forecastHourly;
+        if (!hourlyUrl) throw new Error("Hourly forecast URL unavailable");
+
+        const forecastResponse = await fetch(hourlyUrl);
+        if (!forecastResponse.ok) throw new Error("NWS forecast request failed");
+
+        const forecastData = await forecastResponse.json();
+        const currentPeriod = forecastData?.properties?.periods?.[0];
+        if (!currentPeriod) throw new Error("Forecast period unavailable");
+
+        widget.querySelector(".temp").textContent = `${currentPeriod.temperature}°${currentPeriod.temperatureUnit}`;
+        widget.querySelector(".desc").textContent = currentPeriod.shortForecast;
+      } catch (error) {
+        widget.querySelector(".temp").textContent = "Tap below";
+        widget.querySelector(".desc").textContent = "Live data did not load here, but the official NWS page is available.";
+      }
+    }
+
+    weatherLocations.forEach(fetchWeather);
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
