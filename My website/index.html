@@ -636,6 +636,96 @@ header > * {
   window.setInterval(refreshMap, 10 * 60 * 1000);
 })();
 </script>
+<!--
+  MarceloWXTV Puerto Rico temperature map
+  IMPORTANT: Save the supplied map image in the same folder as this file and name it:
+  puerto-rico-reference-map.png
+-->
+<section class="pr-reference-card" id="puerto-rico-temperatures">
+  <div class="pr-reference-map" role="img" aria-label="Puerto Rico temperature map">
+    <img class="pr-reference-base" src="puerto-rico-reference-map.png" alt="Puerto Rico temperature map" />
+
+    <!-- These overlays cover the sample values in the reference image and update live. -->
+    <div class="live-marker live-san-juan"><strong id="pr-live-san-juan">--°</strong><span>San Juan</span></div>
+    <div class="live-marker live-carolina"><strong id="pr-live-carolina">--°</strong><span>Carolina</span></div>
+    <div class="live-marker live-caguas"><strong id="pr-live-caguas">--°</strong><span>Caguas</span></div>
+    <div class="live-marker live-naguabo"><strong id="pr-live-naguabo">--°</strong><span>Naguabo</span></div>
+    <div class="live-marker live-vieques"><strong id="pr-live-vieques">--°</strong><span>Vieques</span></div>
+    <div class="live-marker live-culebra"><strong id="pr-live-culebra">--°</strong><span>Culebra</span></div>
+    <div class="live-marker live-ponce"><strong id="pr-live-ponce">--°</strong><span>Ponce</span></div>
+    <div class="live-marker live-mayaguez"><strong id="pr-live-mayaguez">--°</strong><span>Mayagüez</span></div>
+
+    <button class="pr-live-refresh" id="pr-live-refresh" type="button">
+      ↻ <span id="pr-live-updated">Updating…</span>
+    </button>
+  </div>
+</section>
+
+<style>
+  .pr-reference-card { max-width: 1100px; margin: 1.5rem auto; overflow: hidden; border-radius: 22px; background: #050607; box-shadow: 0 14px 35px rgba(0,0,0,.42); }
+  .pr-reference-map { position: relative; width: 100%; aspect-ratio: 680 / 344; overflow: hidden; background: #050607; }
+  .pr-reference-base { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .live-marker { position: absolute; z-index: 3; min-width: 48px; padding: 3px 7px 4px; border: 1px solid #ff6670; border-radius: 6px; background: linear-gradient(145deg,#cf000b,#8d0005); color: #fff; text-align: center; line-height: 1.05; box-shadow: 0 3px 9px rgba(0,0,0,.55); font-family: Arial, sans-serif; transform: translate(-50%,-50%); }
+  .live-marker strong { display: block; font-size: clamp(.78rem, 1.9vw, 1.24rem); font-weight: 900; }
+  .live-marker span { display: block; margin-top: 2px; font-size: clamp(.48rem, 1vw, .72rem); font-weight: 800; white-space: nowrap; }
+  .live-san-juan { left: 55.7%; top: 32.8%; } .live-carolina { left: 63.1%; top: 35.8%; } .live-caguas { left: 57.1%; top: 51.5%; } .live-naguabo { left: 75.2%; top: 57.2%; } .live-vieques { left: 88.1%; top: 78.3%; } .live-culebra { left: 91.7%; top: 40.6%; } .live-ponce { left: 33.3%; top: 87.6%; } .live-mayaguez { left: 13.7%; top: 61.7%; }
+  .pr-live-refresh { position: absolute; z-index: 5; right: 1.5%; top: 13.5%; display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid #ff3333; border-radius: 7px; background: #a90000; color: #fff; font: 700 clamp(.52rem, 1.2vw, .78rem) Arial, sans-serif; cursor: pointer; }
+  .pr-live-refresh:disabled { opacity: .75; cursor: wait; }
+  @media (max-width: 600px) { .pr-reference-map { min-width: 620px; } .pr-reference-card { overflow-x: auto; } }
+</style>
+
+<script>
+(() => {
+  const locations = [
+    { slug: "san-juan", lat: 18.4655, lon: -66.1057 },
+    { slug: "carolina", lat: 18.3808, lon: -65.9574 },
+    { slug: "caguas", lat: 18.2341, lon: -66.0485 },
+    { slug: "naguabo", lat: 18.2116, lon: -65.7349 },
+    { slug: "vieques", lat: 18.1263, lon: -65.4401 },
+    { slug: "culebra", lat: 18.3106, lon: -65.3038 },
+    { slug: "ponce", lat: 18.0111, lon: -66.6141 },
+    { slug: "mayaguez", lat: 18.2011, lon: -67.1396 }
+  ];
+  const headers = { Accept: "application/geo+json" };
+
+  async function getCurrent(location) {
+    const point = await fetch(`https://api.weather.gov/points/${location.lat},${location.lon}`, { headers, cache: "no-store" });
+    if (!point.ok) throw new Error("Point lookup failed");
+    const pointData = await point.json();
+    const stations = await fetch(pointData.properties.observationStations, { headers, cache: "no-store" });
+    if (!stations.ok) throw new Error("Station lookup failed");
+    const stationData = await stations.json();
+    for (const station of (stationData.features || []).slice(0, 4)) {
+      const id = station?.properties?.stationIdentifier;
+      if (!id) continue;
+      const response = await fetch(`https://api.weather.gov/stations/${id}/observations/latest`, { headers, cache: "no-store" });
+      if (!response.ok) continue;
+      const data = await response.json();
+      const value = data?.properties?.temperature?.value;
+      if (typeof value === "number") return Math.round(value * 9 / 5 + 32);
+    }
+    throw new Error("No current reading");
+  }
+
+  async function refreshTemperatures() {
+    const button = document.getElementById("pr-live-refresh");
+    const label = document.getElementById("pr-live-updated");
+    button.disabled = true; label.textContent = "Updating…";
+    await Promise.all(locations.map(async (location) => {
+      const target = document.getElementById(`pr-live-${location.slug}`);
+      try { target.textContent = `${await getCurrent(location)}°`; }
+      catch (_) { target.textContent = "—°"; }
+    }));
+    const time = new Intl.DateTimeFormat("en-US", { timeZone: "America/Puerto_Rico", hour: "numeric", minute: "2-digit", timeZoneName: "short" }).format(new Date());
+    label.textContent = `Updated ${time}`; button.disabled = false;
+  }
+
+  document.getElementById("pr-live-refresh").addEventListener("click", refreshTemperatures);
+  refreshTemperatures();
+  window.setInterval(refreshTemperatures, 10 * 60 * 1000);
+})();
+</script>
+
 
     <section id="radar">
       <h2>🛰️ Radar & Weather Maps / Mapas y Radares</h2>
