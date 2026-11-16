@@ -652,66 +652,7 @@ header > * {
     allowfullscreen>
   </iframe>
 
-<script>
-const prCities = {
-  sj:  [18.4655, -66.1057],
-  car: [18.3808, -65.9574],
-  cag: [18.2341, -66.0485],
-  nag: [18.2116, -65.7354],
-  may: [18.2011, -67.1396],
-  pon: [18.0111, -66.6141],
-  vie: [18.1263, -65.4401],
-  cul: [18.3030, -65.3010]
-};
 
-async function updatePRTemperatures() {
-  try {
-    const cities = Object.entries(prCities);
-    const params = new URLSearchParams({
-      latitude: cities.map(c => c[1][0]).join(","),
-      longitude: cities.map(c => c[1][1]).join(","),
-      current: "temperature_2m",
-      temperature_unit: "fahrenheit",
-      timezone: "America/Puerto_Rico"
-    });
-
-    const response = await fetch(
-      "https://api.open-meteo.com/v1/forecast?" + params
-    );
-    if (!response.ok) throw Error("Weather service unavailable");
-
-    const data = await response.json();
-    const results = Array.isArray(data) ? data : [data];
-
-    cities.forEach(([id], i) => {
-      const temp = results[i]?.current?.temperature_2m;
-      const label = document.querySelector(`[data-city="${id}"]`);
-      if (label) label.textContent =
-        Number.isFinite(temp) ? Math.round(temp) + "°" : "--°";
-    });
-
-    const time = new Date().toLocaleTimeString("en-US", {
-      timeZone: "America/Puerto_Rico",
-      hour: "numeric",
-      minute: "2-digit"
-    });
-
-    document.getElementById("pr-updated").textContent =
-      "UPDATED " + time + " AST";
-
-    document.getElementById("pr-status").textContent =
-      "Temperature data: Open-Meteo • Updates every 15 minutes";
-
-  } catch (error) {
-    console.error("Puerto Rico temperatures:", error);
-    document.getElementById("pr-updated").textContent =
-      "DATA UNAVAILABLE";
-  }
-}
-
-updatePRTemperatures();
-setInterval(updatePRTemperatures, 900000);
-</script>
 
   <p>
     Explore rainfall and thunderstorm forecasts
