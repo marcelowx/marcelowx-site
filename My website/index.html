@@ -636,7 +636,55 @@ header > * {
   window.setInterval(refreshMap, 10 * 60 * 1000);
 })();
 </script>
-
+<!-- PUERTO RICO — extracted from the APPROVED image; no external map image -->
+<div id="marcelo-pr" style="max-width:1100px;margin:22px auto;background:#06111f;border-radius:12px;overflow:hidden">
+<style>
+#marcelo-pr svg{width:100%;height:auto;display:block}
+#marcelo-pr .value{fill:white;font:900 32px Arial,sans-serif}
+#marcelo-pr .name{fill:white;font:700 24px Arial,sans-serif}
+#marcelo-pr .coast{fill:#050607;stroke:#ff3439;stroke-width:4;stroke-linejoin:round;filter:url(#glow)}
+#marcelo-pr .small{fill:white;font:700 24px Arial,sans-serif}
+#marcelo-pr a:hover rect{fill:#f20b0b}
+</style>
+<svg viewBox="0 0 1724 912" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Puerto Rico, Vieques, Culebra and eight city temperatures">
+<defs><radialGradient id="sea"><stop stop-color="#17375d"/><stop offset="1" stop-color="#030914"/></radialGradient><linearGradient id="badge" x2="0" y2="1"><stop stop-color="#dd0709"/><stop offset="1" stop-color="#760000"/></linearGradient><filter id="glow" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect width="1724" height="912" fill="url(#sea)"/>
+<path d="M0 22H1724M0 764H1724" stroke="#ff2834" stroke-width="4"/>
+<path d="M0 22H148L74 166H0Z" fill="#d40006"/>
+<text x="160" y="81" fill="white" font-size="55" font-family="Arial" font-weight="900" font-style="italic">PUERTO RICO TEMPERATURES</text>
+<text x="161" y="127" fill="white" font-size="38" font-family="Arial" font-weight="bold" font-style="italic">Temperaturas de Puerto Rico</text>
+<rect x="1255" y="20" width="415" height="64" rx="25" fill="#071122" stroke="#ff3139" stroke-width="4"/>
+<text id="pr-clock" x="1462" y="60" text-anchor="middle" class="small">LOADING DATA...</text>
+<a href="https://www.weather.gov/sju/" target="_blank" rel="noopener noreferrer"><rect x="1290" y="98" width="365" height="95" rx="16" fill="url(#badge)" stroke="white" stroke-width="4"/><text x="1472" y="150" text-anchor="middle" fill="white" font-size="38" font-weight="900" font-family="Arial">⚠ NWS ALERTS</text><text x="1472" y="177" text-anchor="middle" class="small">San Juan</text></a>
+<path class="coast" d="M79,364 120,353 182,321 189,305 174,283 176,273 188,267 196,256 232,246 244,251 272,246 293,248 322,263 343,263 368,271 397,263 425,268 453,262 489,280 507,278 516,268 530,270 579,262 603,274 625,268 640,278 649,274 690,289 700,286 712,271 742,267 752,274 778,276 808,288 843,285 862,294 883,291 889,295 898,290 904,303 916,302 935,288 940,292 937,304 948,310 958,309 963,321 994,321 1001,310 1008,308 1006,300 1011,296 1017,300 1014,305 1021,308 1039,307 1049,296 1078,313 1116,310 1131,320 1163,324 1180,339 1198,341 1208,336 1234,359 1249,356 1260,368 1294,377 1315,369 1333,348 1338,355 1323,377 1322,387 1330,391 1327,402 1331,411 1320,423 1330,433 1322,442 1363,447 1367,454 1346,454 1356,472 1343,472 1347,480 1343,486 1330,479 1331,472 1338,473 1331,471 1329,487 1315,488 1310,498 1299,497 1294,504 1282,503 1276,509 1260,503 1212,527 1200,570 1194,573 1195,585 1188,587 1184,596 1176,591 1164,607 1167,613 1161,626 1146,635 1137,634 1125,648 1115,647 1104,658 1088,663 1065,662 1056,667 1046,661 1031,662 1006,680 989,667 955,684 945,682 929,689 931,695 927,698 895,692 880,700 881,679 906,683 883,669 868,680 873,691 862,698 857,686 849,688 836,680 821,680 818,669 809,669 806,657 799,652 777,667 770,667 771,679 761,674 760,684 753,689 745,679 721,670 706,651 697,650 686,654 679,649 648,658 623,675 598,661 590,664 581,660 573,667 544,668 532,674 494,654 489,659 482,655 477,664 469,660 466,654 473,647 470,642 474,636 452,647 460,650 455,658 411,676 395,670 389,679 384,672 378,679 373,674 360,680 355,676 355,666 337,669 346,669 354,676 351,682 339,685 351,692 345,701 318,693 319,686 300,679 296,669 279,660 269,671 261,665 250,671 246,663 229,663 219,668 213,682 200,688 145,672 137,679 146,689 140,697 127,693 125,680 113,679 119,658 116,648 121,639 149,628 142,620 120,614 117,608 128,600 123,592 137,585 124,573 124,567 135,556 139,542 134,537 143,523 136,511 148,504 159,486 143,468 143,454 131,428 97,412Z"/>
+<path class="coast" d="M1631,626 1616,635 1606,635 1600,641 1591,640 1581,648 1571,646 1564,653 1557,652 1551,660 1542,662 1535,669 1530,668 1522,675 1491,678 1465,689 1447,684 1424,686 1406,682 1397,687 1386,682 1379,684 1375,679 1367,680 1367,672 1353,671 1353,664 1341,663 1348,652 1334,660 1323,655 1325,648 1340,637 1346,641 1346,637 1357,627 1372,627 1377,623 1382,625 1387,619 1394,621 1401,615 1413,616 1421,611 1430,613 1433,609 1442,610 1452,607 1457,601 1463,605 1480,599 1496,599 1502,595 1509,598 1521,596 1524,599 1533,597 1538,602 1545,600 1550,606 1561,606 1563,609 1572,606 1575,610 1587,609 1592,612 1606,608Z"/>
+<path class="coast" d="M1456,412 1462,419 1472,422 1492,420 1500,415 1508,419 1521,419 1538,415 1548,408 1551,400 1559,400 1565,403 1567,412 1575,416 1587,429 1599,432 1608,422 1618,427 1623,425 1632,414 1639,415 1644,411 1656,412 1659,409 1658,384 1653,381 1647,382 1643,390 1634,394 1621,390 1606,381 1585,382 1578,378 1570,378 1550,367 1537,368 1530,365 1518,365 1514,368 1514,376 1507,385 1497,387 1488,395 1480,395 1482,396 1476,400 1461,403Z"/>
+<g><rect x="783" y="215" width="210" height="61" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-sj" x="803" y="255.5" class="value">--°</text><text x="873" y="254.5" class="name" font-size="24">San Juan</text></g><g><rect x="944" y="332" width="206" height="58" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-car" x="964" y="371.0" class="value">--°</text><text x="1034" y="370.0" class="name" font-size="24">Carolina</text></g><g><rect x="720" y="407" width="209" height="58" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-cag" x="740" y="446.0" class="value">--°</text><text x="810" y="445.0" class="name" font-size="24">Caguas</text></g><g><rect x="1054" y="428" width="217" height="58" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-nag" x="1074" y="467.0" class="value">--°</text><text x="1144" y="466.0" class="name" font-size="24">Naguabo</text></g><g><rect x="157" y="367" width="226" height="62" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-may" x="177" y="408.0" class="value">--°</text><text x="247" y="407.0" class="name" font-size="24">Mayagüez</text></g><g><rect x="444" y="544" width="198" height="62" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-pon" x="464" y="585.0" class="value">--°</text><text x="534" y="584.0" class="name" font-size="24">Ponce</text></g><g><rect x="1381" y="494" width="231" height="65" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-vie" x="1401" y="536.5" class="value">--°</text><text x="1471" y="535.5" class="name" font-size="24">Vieques</text></g><g><rect x="1406" y="271" width="222" height="64" rx="13" fill="url(#badge)" stroke="white" stroke-width="3"/><text id="pr-cul" x="1426" y="313.0" class="value">--°</text><text x="1496" y="312.0" class="name" font-size="24">Culebra</text></g>
+<rect x="0" y="767" width="1724" height="88" fill="#030609"/><text x="862" y="821" fill="white" font-style="italic" font-weight="900" text-anchor="middle" font-size="34" font-family="Arial">LIVE TEMPERATURES  •  UPDATES EVERY 15 MINUTES</text>
+<text id="pr-state" x="862" y="882" text-anchor="middle" fill="#ccc" font-size="19" font-family="Arial">Loading temperature estimates from Open-Meteo...</text>
+</svg></div>
+<script>
+(()=>{
+const ids=['sj','car','cag','nag','may','pon','vie','cul'];
+const lat=[18.4655,18.3808,18.2341,18.2116,18.2011,18.0111,18.1263,18.303];
+const lon=[-66.1057,-65.9574,-66.0485,-65.7354,-67.1396,-66.6141,-65.4401,-65.301];
+const root=document.getElementById('marcelo-pr');
+async function refresh(){
+try{
+const u=new URL('https://api.open-meteo.com/v1/forecast');
+u.search=new URLSearchParams({latitude:lat.join(','),longitude:lon.join(','),current:'temperature_2m',temperature_unit:'fahrenheit',timezone:'America/Puerto_Rico'});
+const r=await fetch(u);if(!r.ok)throw Error('Weather service error');
+const data=await r.json(),arr=Array.isArray(data)?data:[data];
+if(arr.length!==8)throw Error('Missing readings');
+arr.forEach((d,i)=>{let v=d.current?.temperature_2m;root.querySelector('#pr-'+ids[i]).textContent=Number.isFinite(v)?Math.round(v)+'°':'--°'});
+root.querySelector('#pr-clock').textContent='UPDATED '+new Date().toLocaleTimeString('en-US',{timeZone:'America/Puerto_Rico',hour:'numeric',minute:'2-digit'})+' AST';
+root.querySelector('#pr-state').textContent='Open-Meteo estimated current temperatures (°F) • Refreshes every 15 minutes';
+}catch(e){root.querySelector('#pr-clock').textContent='DATA UNAVAILABLE';root.querySelector('#pr-state').textContent='Live temperature data temporarily unavailable';console.warn(e)}
+}
+refresh();setInterval(refresh,900000);
+})();
+</script>
+<!-- END PUERTO RICO -->
     <section id="radar">
       <h2>🛰️ Radar & Weather Maps / Mapas y Radares</h2>
       <p class="section-intro">.</p>
